@@ -16,32 +16,39 @@ public class P_Finder : MonoBehaviour
     {
         Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, checkRaduis, interactableLayer);
 
-        HashSet<Transform> currentObjects = new HashSet<Transform>();
+        Transform closetObject = null;
+        float closetDistance = Mathf.Infinity;
+
         foreach (Collider obj in nearbyObjects)
         {
             Transform targetTransform = obj.transform;
             float distance = Vector3.Distance(transform.position, targetTransform.position);
-            if (distance <= activationDistance)
+            if (distance <= activationDistance && distance < closetDistance)
             {
-                ShowIcon(targetTransform);
-                currentObjects.Add(targetTransform);
-
+                closetObject = targetTransform;
+                closetDistance = distance;
             }
         }
-
+        if (closetObject != null)
+        {
+            ShowIcon(closetObject);
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("오브젝트 상호작용!");
+            }
+        }
         List<Transform> toRemove = new List<Transform>();
         foreach (var iconEntry in activeIcons)
         {
-            if (!currentObjects.Contains(iconEntry.Key))
+            if (iconEntry.Key != closetObject)
             {
                 iconEntry.Value.GetComponent<UI_Animation_Handler>().AnimationChange("Out");
-                //Destroy(iconEntry.Value);
                 toRemove.Add(iconEntry.Key);
             }
         }
-        foreach (var transformToRemove in toRemove)
+        foreach (var tranformToRemove in toRemove)
         {
-            activeIcons.Remove(transformToRemove);
+            activeIcons.Remove(tranformToRemove);
         }
     }
 
@@ -60,8 +67,8 @@ public class P_Finder : MonoBehaviour
     {
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(
             new Vector3(
-                targetTransform.position.x, 
-                targetTransform.position.y + 1.5f, 
+                targetTransform.position.x,
+                targetTransform.position.y + 1.5f,
                 targetTransform.position.z));
 
         icon.GetComponent<RectTransform>().position = screenPosition;
