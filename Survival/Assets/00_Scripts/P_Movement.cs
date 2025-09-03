@@ -5,16 +5,23 @@ public class P_Movement : MonoBehaviour
 {
     [Header("#Movement Settings")]
     public float moveSpeed = 5.0f;
-    public float gravity = -9.81f; // RegidBody에서 처리하던 중력값 처리를 한다.
+
+    [Header("#Mouse Rotation")]
+    [Space(20f)]
+    public LayerMask groundLayer;
+    public float rotationSpeed = 10.0f;
 
     private CharacterController controller;
+    private Animator animator;
     public void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
     private void Update()
     {
         Move();
+        RotateTowardsMouse();
     }
     void Move()
     {
@@ -34,5 +41,24 @@ public class P_Movement : MonoBehaviour
 
         controller.Move(moveDirection * moveSpeed * Time.deltaTime);
 
+        float currentSpeed = moveDirection.magnitude * moveSpeed;
+        animator.SetFloat("a_Speed", currentSpeed);
+    }
+    void RotateTowardsMouse()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, groundLayer))
+        {
+            Vector3 targetPosition = hit.point;
+
+            Vector3 direction = (targetPosition - transform.position).normalized;
+            direction.y = 0.0f;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
+        }
     }
 }
