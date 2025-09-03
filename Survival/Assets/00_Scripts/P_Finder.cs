@@ -4,7 +4,7 @@ using UnityEngine;
 public class P_Finder : MonoBehaviour
 {
     [SerializeField] private float checkRaduis = 5.0f;
-    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private LayerMask interactableLayer; // "object"Layer를 유니티에서 등록해야 한다.
     [SerializeField] Canvas uiCanvas;
     [SerializeField] private GameObject IconPrefab;
 
