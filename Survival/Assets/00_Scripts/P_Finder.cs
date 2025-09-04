@@ -11,20 +11,28 @@ public class P_Finder : MonoBehaviour
     [SerializeField] private float activationDistance = 3.0f;
 
     private Dictionary<Transform, GameObject> activeIcons = new Dictionary<Transform, GameObject>();
-    private bool OnInteraction = false;
+    [HideInInspector] public bool OnInteraction = false;
     private Transform closetObject = null;
 
     private void Start()
     {
-        Delegate_Holder.OnInteractive += OnInteractionVoid;
+        Delegate_Holder.OnInteraction += OnInteractionVoid;
+        Delegate_Holder.OnInteractionOut += OnInteractionOut;
     }
 
     void OnInteractionVoid()
     {
         OnInteraction = true;
         closetObject = null;
+
         IconInit();
     }
+    void OnInteractionOut()
+    {
+        Invoke("InteractionFalse", 1.0f);
+        activeIcons.Clear();
+    }
+    void InteractionFalse() => OnInteraction = false;
 
     private void Update()
     {
