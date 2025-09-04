@@ -119,6 +119,25 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &172786436 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1697854971701876781, guid: d0a1dd6fb7ae56447972d0371c8b4c65, type: 3}
+  m_PrefabInstance: {fileID: 1211938916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &172786440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 172786436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fd9b60512436664a999cd4005eb3153, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Interaction_Hit
+  m_Data: {fileID: 11400000, guid: ce0ce5e895578a449a776b0af7ba8fec, type: 2}
+  GetInteraction: 0
 --- !u!1 &269331446
 GameObject:
   m_ObjectHideFlags: 0
@@ -870,7 +889,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1697854971701876781, guid: d0a1dd6fb7ae56447972d0371c8b4c65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 172786440}
   m_SourcePrefab: {fileID: 100100000, guid: d0a1dd6fb7ae56447972d0371c8b4c65, type: 3}
 --- !u!1001 &1246370900
 PrefabInstance:
@@ -1905,6 +1927,7 @@ MonoBehaviour:
   uiCanvas: {fileID: 2061552550}
   IconPrefab: {fileID: 8037100611054073882, guid: 79ea16cd9fdea3a47a5b85b722fa2285, type: 3}
   activationDistance: 3
+  OnInteraction: 0
 --- !u!4 &936440892122656157
 Transform:
   m_ObjectHideFlags: 0

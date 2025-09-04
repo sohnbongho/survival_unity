@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class P_Movement : MonoBehaviour
 {
+    public static P_Movement instance;
+
     [Header("#Movement Settings")]
     public float moveSpeed = 5.0f;
 
@@ -14,6 +16,21 @@ public class P_Movement : MonoBehaviour
     private CharacterController controller;
     private Animator animator;
     private P_Finder Finder;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+    public void AnimationChange(string temp)
+    {
+        animator.SetTrigger(temp);
+    }
+    public void Attack()
+    {        
+    }
 
     public void Start()
     {
