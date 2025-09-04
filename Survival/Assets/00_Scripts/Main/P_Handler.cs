@@ -6,7 +6,7 @@ public class P_Handler : MonoBehaviour
 
     public void Hit()
     {
-        m_Object.HP -= 10;
+        m_Object.HP -= 20;
         m_Object.HP_Init();
     }
     

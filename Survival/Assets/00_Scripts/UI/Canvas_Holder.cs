@@ -26,12 +26,16 @@ public class Canvas_Holder : MonoBehaviour
     public void GetBoard()
     {
         Board.SetActive(true);
+        BoardHpFill.fillAmount = 1.0f;
+        BoardHpWhiteFill.fillAmount = 1.0f;
     }
 
     public void BoardOut() => Board.GetComponent<UI_Animation_Handler>().AnimationChange("Out");
 
     public void BoardFill(float hp, float MaxHp)
     {
+
+
         BoardHpFill.fillAmount = hp / MaxHp;
         if (F_Coroutine != null)
         {
@@ -46,7 +50,7 @@ public class Canvas_Holder : MonoBehaviour
         {
             BoardHpWhiteFill.fillAmount = Mathf.Lerp(BoardHpWhiteFill.fillAmount,
                 BoardHpFill.fillAmount,
-                Time.deltaTime * 2.0f);
+                Time.deltaTime * 5.0f);
 
             yield return null;
         }

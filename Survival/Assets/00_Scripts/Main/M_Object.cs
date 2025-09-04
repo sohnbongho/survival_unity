@@ -14,6 +14,13 @@ public class M_Object : MonoBehaviour
     }
     public virtual void HP_Init()
     {
+        if (HP <= 0)
+        {
+            HP = 0;
+            Destroy(this.gameObject);
+            Delegate_Holder.OnOutInteraction();
+            return;
+        }
         Canvas_Holder.instance.BoardFill(HP, m_Data.HP);
     }
 }
