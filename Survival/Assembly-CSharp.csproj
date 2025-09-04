@@ -61,9 +61,12 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\00_Scripts\Delegate_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Cam_Movement.cs" />
     <Compile Include="Assets\00_Scripts\P_Movement.cs" />
+    <Compile Include="Assets\00_Scripts\Canvas_Holder.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\00_Scripts\Game_Mng.cs" />
     <Compile Include="Assets\00_Scripts\UI_Animation_Handler.cs" />
     <Compile Include="Assets\00_Scripts\P_Finder.cs" />
   </ItemGroup>

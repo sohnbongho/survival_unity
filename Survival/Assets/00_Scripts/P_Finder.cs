@@ -11,12 +11,31 @@ public class P_Finder : MonoBehaviour
     [SerializeField] private float activationDistance = 3.0f;
 
     private Dictionary<Transform, GameObject> activeIcons = new Dictionary<Transform, GameObject>();
+    private bool OnInteraction = false;
+    private Transform closetObject = null;
+
+    private void Start()
+    {
+        Delegate_Holder.OnInteractive += OnInteractionVoid;
+    }
+
+    void OnInteractionVoid()
+    {
+        OnInteraction = true;
+        closetObject = null;
+        IconInit();
+    }
 
     private void Update()
     {
-        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, checkRaduis, interactableLayer);
+        if (OnInteraction)
+        {
+            return;
+        }
 
-        Transform closetObject = null;
+        Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, checkRaduis, interactableLayer);
+        closetObject = null;
+
         float closetDistance = Mathf.Infinity;
 
         foreach (Collider obj in nearbyObjects)
@@ -34,9 +53,16 @@ public class P_Finder : MonoBehaviour
             ShowIcon(closetObject);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("오브젝트 상호작용!");
+                //Debug.Log("오브젝트 상호작용!");
+                Delegate_Holder.OnStartInteraction();
             }
         }
+
+        IconInit();
+    }
+
+    private void IconInit()
+    {
         List<Transform> toRemove = new List<Transform>();
         foreach (var iconEntry in activeIcons)
         {
