@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interaction_Hit
   m_Data: {fileID: 11400000, guid: ce0ce5e895578a449a776b0af7ba8fec, type: 2}
   GetInteraction: 0
+  HP: 0
 --- !u!1 &269331446
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +1700,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Canvas_Holder
   Board: {fileID: 621293264}
+  BoardHpFill: {fileID: 2103619485}
+  BoardHpWhiteFill: {fileID: 1484412171}
 --- !u!1 &2103619483
 GameObject:
   m_ObjectHideFlags: 0
@@ -1917,6 +1920,7 @@ GameObject:
   - component: {fileID: 543450652347621657}
   - component: {fileID: 919132148358855589}
   - component: {fileID: 919132148358855591}
+  - component: {fileID: 919132148358855592}
   - component: {fileID: 919132148358855588}
   - component: {fileID: 919132148358855590}
   m_Layer: 0
@@ -2010,6 +2014,18 @@ MonoBehaviour:
   IconPrefab: {fileID: 8037100611054073882, guid: 79ea16cd9fdea3a47a5b85b722fa2285, type: 3}
   activationDistance: 3
   OnInteraction: 0
+--- !u!114 &919132148358855592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148358855587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411edca8dea411141a26da64387733b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::P_Handler
 --- !u!4 &936440892122656157
 Transform:
   m_ObjectHideFlags: 0

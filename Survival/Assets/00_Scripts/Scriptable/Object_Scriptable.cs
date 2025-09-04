@@ -5,5 +5,5 @@ public class Object_Scriptable : ScriptableObject
 {
     public Object_Type m_Type;
     public string Name;
-    public int Hp;    
+    public int HP;    
 }

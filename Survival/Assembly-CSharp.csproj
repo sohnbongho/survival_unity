@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\00_Scripts\Main\P_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Game_Mng.cs" />
+    <Compile Include="Assets\00_Scripts\Main\P_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Main\Interaction_Hit.cs" />
     <Compile Include="Assets\00_Scripts\UI\Canvas_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Scriptable\Object_Scriptable.cs" />
