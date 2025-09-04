@@ -55,7 +55,7 @@ public class Item : MonoBehaviour
             {
                 elapsedTime += Time.deltaTime;
                 float t = elapsedTime / journeyTime;
-                
+
                 Vector3 currentPos = Vector3.Lerp(startPosition, endPosition, t);
                 transform.position = currentPos;
 
