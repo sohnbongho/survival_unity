@@ -41,7 +41,8 @@ public class P_Movement : MonoBehaviour
         Delegate_Holder.OnInteraction += () =>
         {
             animator.SetBool("NoneInteraction", true);
-            animator.SetFloat("a_Speed", 0.0f); // 
+            animator.SetFloat("a_Speed", 0.0f); //             
+
         };
         Delegate_Holder.OnInteractionOut += () => animator.SetBool("NoneInteraction", false);
     }

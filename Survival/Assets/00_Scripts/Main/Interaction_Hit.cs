@@ -6,7 +6,7 @@ public class Interaction_Hit : M_Object
     float shakeAmount = 5.0f;
     float shakeDuration = 0.5f;
 
-    private Quaternion orginalRotation;
+    private Quaternion orginalRotation;    
 
     private void Start()
     {
@@ -24,6 +24,15 @@ public class Interaction_Hit : M_Object
     {
         base.OnHit();
         ShakeTree(transform.position - P_Movement.instance.transform.position);
+
+        if(HP <= 0)
+        {
+            for(int i = 0; i< 5; i++)
+            {
+                Instantiate(Item_Prefab, transform.position, Quaternion.identity);
+            }
+
+        }
     }
 
     private void ShakeTree(Vector3 attackDirection)

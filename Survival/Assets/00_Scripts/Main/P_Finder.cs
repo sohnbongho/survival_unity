@@ -23,18 +23,18 @@ public class P_Finder : MonoBehaviour
     void OnInteractionVoid()
     {
         OnInteraction = true;
+
+        transform.LookAt(closetObject.transform.position);
         closetObject = null;
-
-
 
         IconInit();
     }
     void OnInteractionOut()
-    {        
+    {
         OnInteraction = false;
         activeIcons.Clear();
     }
-    
+
 
     private void Update()
     {
