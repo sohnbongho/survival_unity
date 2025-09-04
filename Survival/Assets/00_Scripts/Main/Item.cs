@@ -6,6 +6,7 @@ public class Item : MonoBehaviour
     [SerializeField] private float spreadRadius = 10.0f; // 퍼지는 반경
     [SerializeField] private float arcHeight = 5.0f; // 포물선 높이
     [SerializeField] private float moveSpeed = 5.0f; // 아이템 이동 속도
+    [SerializeField] private GameObject GetParticle; // 아이템 이동 속도
 
     Transform player;
     private void Start()
@@ -67,6 +68,8 @@ public class Item : MonoBehaviour
             }
             startPosition = transform.position; // 시작 위치를 갱신하여 부드럽게 이동
         }
+
+        Instantiate(GetParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

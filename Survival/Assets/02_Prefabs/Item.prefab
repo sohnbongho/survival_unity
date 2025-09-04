@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c74fea2707fb28144876598872175eaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Item
-  spreadRadius: 15
+  spreadRadius: 13
   arcHeight: 7
   moveSpeed: 8
+  GetParticle: {fileID: 4100502893993490495, guid: ca45b07c881229946a1a1bedf3ed154f, type: 3}
