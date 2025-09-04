@@ -25,6 +25,8 @@ public class P_Finder : MonoBehaviour
         OnInteraction = true;
         closetObject = null;
 
+
+
         IconInit();
     }
     void OnInteractionOut()

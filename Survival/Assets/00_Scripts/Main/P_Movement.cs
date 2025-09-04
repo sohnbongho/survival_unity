@@ -20,6 +20,9 @@ public class P_Movement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         Finder = GetComponent<P_Finder>();
+
+        Delegate_Holder.OnInteraction += () => animator.SetBool("NoneInteraction", true);
+        Delegate_Holder.OnInteractionOut += () => animator.SetBool("NoneInteraction", false);
     }
     private void Update()
     {
