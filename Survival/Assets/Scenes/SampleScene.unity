@@ -1839,6 +1839,7 @@ GameObject:
   - component: {fileID: 2123071720}
   - component: {fileID: 2123071719}
   - component: {fileID: 2123071718}
+  - component: {fileID: 2123071721}
   m_Layer: 0
   m_Name: Destroy_Particle
   m_TagString: Untagged
@@ -1941,9 +1942,9 @@ ParticleSystem:
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -1999,7 +2000,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: 0
@@ -6722,6 +6723,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &2123071721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123071717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeb51bf57788a344ca10cbe9cd66d7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Particle_Handler
 --- !u!4 &63295366194080007
 Transform:
   m_ObjectHideFlags: 0

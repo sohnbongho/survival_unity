@@ -30,11 +30,11 @@ public class P_Finder : MonoBehaviour
         IconInit();
     }
     void OnInteractionOut()
-    {
-        Invoke("InteractionFalse", 1.0f);
+    {        
+        OnInteraction = false;
         activeIcons.Clear();
     }
-    void InteractionFalse() => OnInteraction = false;
+    
 
     private void Update()
     {

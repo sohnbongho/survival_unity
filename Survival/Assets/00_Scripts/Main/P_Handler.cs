@@ -15,7 +15,7 @@ public class P_Handler : MonoBehaviour
             m_Object.transform.position.z + Random.Range(-0.5f, 0.5f));
 
         Instantiate(HitParticle, pos, Quaternion.identity);
-        m_Object.HP_Init();
+        m_Object.OnHit();
     }
 
 }

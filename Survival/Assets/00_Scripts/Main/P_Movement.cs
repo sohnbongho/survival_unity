@@ -19,7 +19,7 @@ public class P_Movement : MonoBehaviour
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -29,7 +29,7 @@ public class P_Movement : MonoBehaviour
         animator.SetTrigger(temp);
     }
     public void Attack()
-    {        
+    {
     }
 
     public void Start()
@@ -38,14 +38,18 @@ public class P_Movement : MonoBehaviour
         animator = GetComponent<Animator>();
         Finder = GetComponent<P_Finder>();
 
-        Delegate_Holder.OnInteraction += () => animator.SetBool("NoneInteraction", true);
+        Delegate_Holder.OnInteraction += () =>
+        {
+            animator.SetBool("NoneInteraction", true);
+            animator.SetFloat("a_Speed", 0.0f); // 
+        };
         Delegate_Holder.OnInteractionOut += () => animator.SetBool("NoneInteraction", false);
     }
     private void Update()
     {
         if (Finder.OnInteraction)
         {
-            if (Input.anyKeyDown)
+            if (Input.anyKeyDown && false == Input.GetKeyDown(KeyCode.F))
             {
                 Delegate_Holder.OnOutInteraction();
             }

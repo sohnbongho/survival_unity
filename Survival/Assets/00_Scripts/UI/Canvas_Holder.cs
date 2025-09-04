@@ -25,17 +25,13 @@ public class Canvas_Holder : MonoBehaviour
 
     public void GetBoard()
     {
-        Board.SetActive(true);
-        BoardHpFill.fillAmount = 1.0f;
-        BoardHpWhiteFill.fillAmount = 1.0f;
+        Board.SetActive(true);        
     }
 
     public void BoardOut() => Board.GetComponent<UI_Animation_Handler>().AnimationChange("Out");
 
     public void BoardFill(float hp, float MaxHp)
     {
-
-
         BoardHpFill.fillAmount = hp / MaxHp;
         if (F_Coroutine != null)
         {

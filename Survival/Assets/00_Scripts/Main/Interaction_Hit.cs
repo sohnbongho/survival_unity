@@ -11,17 +11,18 @@ public class Interaction_Hit : M_Object
     private void Start()
     {
         orginalRotation = transform.rotation;
+        HP = m_Data.HP;
     }
 
     public override void Interaction()
     {
         P_Movement.instance.AnimationChange(m_Data.m_Type.ToString());
         base.Interaction();
-    }
+    }    
 
-    public override void HP_Init()
+    public override void OnHit()
     {
-        base.HP_Init();
+        base.OnHit();
         ShakeTree(transform.position - P_Movement.instance.transform.position);
     }
 

@@ -8,17 +8,26 @@ public class M_Object : MonoBehaviour
 
     public virtual void Interaction()
     {
-        P_Handler.m_Object = this;
-        HP = m_Data.HP;
+        P_Handler.m_Object = this;        
         GetInteraction = true;
+        HP_Init();
     }
+    public virtual void OnHit()
+    {
+        HP_Init();
+    }
+
     public virtual void HP_Init()
     {
         if (HP <= 0)
         {
             HP = 0;
+
+            Particle_Handler.instance.OnParticle(transform.GetChild(0).GetComponent<MeshRenderer>());
+
+            // 파괴 되기전에 위치를 보낸다.
             Destroy(this.gameObject);
-            Delegate_Holder.OnOutInteraction();
+            Delegate_Holder.OnOutInteraction();            
             return;
         }
         Canvas_Holder.instance.BoardFill(HP, m_Data.HP);
