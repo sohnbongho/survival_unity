@@ -15,3 +15,14 @@ MonoBehaviour:
   m_Type: 0
   Name: "\uB098\uBB34"
   HP: 100
+  Drop_Items:
+  - Item_Data: {fileID: 11400000, guid: 97fe3793b07562d4a8ac5e5c3666e5a8, type: 2}
+    Value: 80
+  - Item_Data: {fileID: 11400000, guid: 8ee38c68a02148d49b34d40a22fea211, type: 2}
+    Value: 50
+  - Item_Data: {fileID: 11400000, guid: 95d92645e71002148a1224dd4fbe4ab4, type: 2}
+    Value: 50
+  - Item_Data: {fileID: 11400000, guid: 64ab99106eb7fab45bfc6b2f281a283b, type: 2}
+    Value: 50
+  - Item_Data: {fileID: 11400000, guid: a7b44e0cc4ef7524bbcc1e298aeed4da, type: 2}
+    Value: 50
