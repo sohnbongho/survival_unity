@@ -17,7 +17,7 @@ public class Item : MonoBehaviour
 
     IEnumerator SpreadAndMoveToPlayer()
     {
-        Vector3 spreadDirection = Random.insideUnitCircle * spreadRadius;
+        Vector3 spreadDirection = Random.insideUnitSphere * spreadRadius;
         Vector3 spreadPosition = transform.position + spreadDirection;
 
         // 1.0보다 작게 할수 없다
