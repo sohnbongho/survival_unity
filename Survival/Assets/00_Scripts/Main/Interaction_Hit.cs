@@ -6,7 +6,7 @@ public class Interaction_Hit : M_Object
     float shakeAmount = 5.0f;
     float shakeDuration = 0.5f;
 
-    private Quaternion orginalRotation;    
+    private Quaternion orginalRotation;
 
     private void Start()
     {
@@ -18,18 +18,21 @@ public class Interaction_Hit : M_Object
     {
         P_Movement.instance.AnimationChange(m_Data.m_Type.ToString());
         base.Interaction();
-    }    
+    }
 
     public override void OnHit()
     {
         base.OnHit();
         ShakeTree(transform.position - P_Movement.instance.transform.position);
 
-        if(HP <= 0)
+        if (HP <= 0)
         {
-            for(int i = 0; i< 5; i++)
+            var items = ItemFlowController.DROPITEMLIST(m_Data.Drop_Items);
+
+            for (int i = 0; i < items.Count; i++)
             {
                 Instantiate(Item_Prefab, transform.position, Quaternion.identity);
+                Debug.Log(items[i].ItemID + " : " + items[i].ItemName + " : " + items[i].Description);
             }
 
         }

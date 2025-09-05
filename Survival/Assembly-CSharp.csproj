@@ -78,6 +78,7 @@
     <Compile Include="Assets\00_Scripts\Manager\Delegate_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Enum_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Main\M_Object.cs" />
+    <Compile Include="Assets\00_Scripts\Manager\ItemFlowController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
