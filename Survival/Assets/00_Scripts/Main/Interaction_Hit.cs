@@ -32,6 +32,7 @@ public class Interaction_Hit : M_Object
             for (int i = 0; i < items.Count; i++)
             {
                 var go = Instantiate(Item_Prefab, transform.position, Quaternion.identity);
+
                 go.Init(items[i]);
                 //Debug.Log(items[i].ItemID + " : " + items[i].ItemName + " : " + items[i].Description);
             }

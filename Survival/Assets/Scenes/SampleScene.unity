@@ -1074,7 +1074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &365120248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1994,7 +1994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 1681052687}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
   m_Elasticity: 0.1
@@ -2422,6 +2422,7 @@ GameObject:
   - component: {fileID: 1152097636}
   - component: {fileID: 1152097638}
   - component: {fileID: 1152097637}
+  - component: {fileID: 1152097639}
   m_Layer: 5
   m_Name: ITEM_PANEL
   m_TagString: Untagged
@@ -2487,6 +2488,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1152097635}
   m_CullTransparentMesh: 1
+--- !u!114 &1152097639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152097635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e40f87fe05484d4dbf5f1be991dbd54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Item_Panel
+  m_Item:
+    Data: {fileID: 0}
+    Count: 0
+  m_ITEMPANEL: {fileID: 365120247}
+  Rarity: {fileID: 1152097637}
+  Item_Icon: {fileID: 471853320}
+  ItemCountText: {fileID: 1471490227}
+  ItemWeightText: {fileID: 1744298863}
 --- !u!1 &1210977641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3700,6 +3721,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177f2a1af25e37a4aa11e7ba1e5b540c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::INVENTORY
+  Item_Panel: {fileID: 1152097635}
+  Content: {fileID: 1681052687}
 --- !u!1 &1681052686
 GameObject:
   m_ObjectHideFlags: 0
@@ -4003,7 +4026,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 838e0766e69c47a419bf0eac65366880, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

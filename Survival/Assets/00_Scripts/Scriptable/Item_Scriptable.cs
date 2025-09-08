@@ -11,3 +11,11 @@ public class Item_Scriptable : ScriptableObject
     public float Weight;
 
 }
+
+[System.Serializable]
+public class ITEM
+{
+    public Item_Scriptable Data;
+    public int Count;
+
+}
