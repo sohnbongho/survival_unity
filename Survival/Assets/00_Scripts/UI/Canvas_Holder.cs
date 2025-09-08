@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class Canvas_Holder : MonoBehaviour
 {
     public static Canvas_Holder instance = null;
 
+    [SerializeField] private Transform UI_PART_PARENT;
     [SerializeField] private GameObject Board;
     [SerializeField] private GameObject InventoryPanel;
 
@@ -19,8 +21,46 @@ public class Canvas_Holder : MonoBehaviour
             instance = this;
         }
     }
+    private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
+    public void OpenUI(string uiName)
+    {
+        if (uiParts.ContainsKey(uiName))
+        {
+            uiParts[uiName].Open();
+        }
+        else
+        {
+            Debug.LogWarning($"UI {uiName} not found.");
+        }
+    }
+    public void CloseUI(string uiName)
+    {
+        if (uiParts.ContainsKey(uiName))
+        {
+            uiParts[uiName].Close();
+        }
+        else
+        {
+            Debug.LogWarning($"UI {uiName} not found.");
+        }
+    }
+    public void CloseAllUI()
+    {
+        foreach (var part in uiParts.Values)
+        {
+            part.Close();
+        }
+    }
+
     private void Start()
     {
+        // true: 비활성화 된 오브젝트도 찾는다.
+        UIPART[] parts = UI_PART_PARENT.GetComponentsInChildren<UIPART>(true);
+        foreach (var part in parts)
+        {            
+            uiParts.Add(part.name, part);
+        }
+
         Delegate_Holder.OnInteraction += GetBoard;
         Delegate_Holder.OnInteractionOut += BoardOut;
     }
@@ -28,7 +68,7 @@ public class Canvas_Holder : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
-            InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+            uiParts["INVENTORY"].Toggle();            
         }
     }
 
