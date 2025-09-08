@@ -8,5 +8,6 @@ public class Item_Scriptable : ScriptableObject
     public string Description;
     public Item_Type Type;
     public Rarity rarity;
+    public float Weight;
 
 }
