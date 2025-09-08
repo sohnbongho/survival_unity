@@ -65,6 +65,7 @@
     <Compile Include="Assets\00_Scripts\Particle_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Main\P_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Main\Item.cs" />
+    <Compile Include="Assets\00_Scripts\UI\Navagation_Mng.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Game_Mng.cs" />
     <Compile Include="Assets\00_Scripts\Main\P_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Main\Interaction_Hit.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="Assets\00_Scripts\Main\P_Finder.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Asset_Mng.cs" />
+    <Compile Include="Assets\00_Scripts\UI\Nav_Item.cs" />
     <Compile Include="Assets\00_Scripts\UI\UI_Animation_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Main\Cam_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Delegate_Holder.cs" />

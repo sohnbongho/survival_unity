@@ -9,6 +9,13 @@ public class Item : MonoBehaviour
     [SerializeField] private GameObject GetParticle; // 아이템 이동 속도
 
     Transform player;
+    Item_Scriptable m_Data;
+
+    public void Init(Item_Scriptable data)
+    {
+        m_Data = data;
+    }
+
     private void Start()
     {
         player = P_Movement.instance.transform;
@@ -70,7 +77,8 @@ public class Item : MonoBehaviour
         }
 
         Instantiate(GetParticle, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        Navagation_Mng.instance.PanelGet_Item(m_Data);
+        Destroy(this.gameObject);
     }
 
 }
