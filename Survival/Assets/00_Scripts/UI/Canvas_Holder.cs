@@ -70,6 +70,11 @@ public class Canvas_Holder : MonoBehaviour
         {
             uiParts["INVENTORY"].Toggle();            
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            uiParts["BUILDING"].Toggle();            
+        }
     }
 
     public void GetBoard()

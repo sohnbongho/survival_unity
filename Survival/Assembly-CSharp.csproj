@@ -62,6 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\00_Scripts\Scriptable\Item_Scriptable.cs" />
+    <Compile Include="Assets\00_Scripts\UI\PART\BUILDING.cs" />
     <Compile Include="Assets\00_Scripts\Particle_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Main\P_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Main\Item.cs" />
