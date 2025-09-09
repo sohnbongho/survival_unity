@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971449c0014c2024eb8fe755a80ee155, type: 3}
-  m_Name: Object_Scriptable
+  m_Name: Tree
   m_EditorClassIdentifier: Assembly-CSharp::NewScriptableObjectScript
   m_Type: 0
   Name: "\uB098\uBB34"
@@ -19,15 +19,6 @@ MonoBehaviour:
   - Item_Data: {fileID: 11400000, guid: 97fe3793b07562d4a8ac5e5c3666e5a8, type: 2}
     Value: 100
     Maximum: 5
-  - Item_Data: {fileID: 11400000, guid: 8ee38c68a02148d49b34d40a22fea211, type: 2}
-    Value: 100
-    Maximum: 5
-  - Item_Data: {fileID: 11400000, guid: 95d92645e71002148a1224dd4fbe4ab4, type: 2}
-    Value: 100
-    Maximum: 5
-  - Item_Data: {fileID: 11400000, guid: 64ab99106eb7fab45bfc6b2f281a283b, type: 2}
-    Value: 100
-    Maximum: 5
-  - Item_Data: {fileID: 11400000, guid: a7b44e0cc4ef7524bbcc1e298aeed4da, type: 2}
+  - Item_Data: {fileID: 11400000, guid: d4ad6e91e3f77014abce373b364c8b47, type: 2}
     Value: 100
     Maximum: 5
