@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,9 +33,25 @@ public class BUILDING : UIPART
 
     private void SetBuilding()
     {
+        StartCoroutine(GetOpenCoroutine());
+    }
+
+    IEnumerator GetOpenCoroutine()
+    {
+        yield return new WaitForSeconds(0.3f);
         for (int i = 0; i < building_list.Count; i++)
         {
             building_list[i].SetData();
+            yield return new WaitForSeconds(0.02f);
+        }
+
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < building_list.Count; i++)
+        {
+            building_list[i].gameObject.SetActive(false);
         }
     }
 }
