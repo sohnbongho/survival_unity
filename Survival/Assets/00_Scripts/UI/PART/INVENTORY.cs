@@ -1,13 +1,20 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class INVENTORY : UIPART
 {
     public GameObject Item_Panel;
     public Transform Content;
 
+    public Image WeightFill;
+    public TextMeshProUGUI WeightText;
+
     List<Item_Panel> items = new List<Item_Panel>();
     int ItemMaximumValue = 50;
+
+    public GameObject ItemClickTap;
 
     private void Start()
     {
@@ -36,7 +43,7 @@ public class INVENTORY : UIPART
         int value = 0;
         foreach (var item in ItemFlowController.Item_Pairs)
         {
-            items[value].Init(item.Value);
+            items[value].Init(item.Value, this);
             value++;
         }
 
@@ -49,5 +56,16 @@ public class INVENTORY : UIPART
         {
             items[i].SetItem();
         }
+        WeightFill.fillAmount = ItemFlowController.Weight() / ItemFlowController.Player_Weight;
+        WeightText.text = string.Format("{0:0.0}/{1:0.0}",
+            ItemFlowController.Weight(),
+            ItemFlowController.Player_Weight);
+    }
+
+    public void SetItemClickAnimation(Item_Panel panel)
+    {
+        ItemClickTap.gameObject.SetActive(true);
+        ItemClickTap.transform.SetParent(panel.transform);
+        ItemClickTap.transform.localPosition = Vector2.zero;
     }
 }

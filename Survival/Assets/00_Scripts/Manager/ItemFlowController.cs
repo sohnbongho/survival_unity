@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemFlowController : MonoBehaviour
 {
     public static Dictionary<int, ITEM> Item_Pairs = new Dictionary<int, ITEM>();
+    public static float Player_Weight = 2500.0f;
 
     public static List<ITEM> DROPITEMLIST(List<ITEMLIST> m_ItemList)
     {
@@ -50,5 +51,24 @@ public class ItemFlowController : MonoBehaviour
             return true;
         }
         return false;
+    }
+    public static float WeightItem(int key)
+    {
+        if (HaveItem(key))
+        {
+            ITEM item = Item_Pairs[key];
+            float value = item.Data.Weight * item.Count;
+            return value;
+        }
+        return -1.0f;
+    }
+    public static float Weight()
+    {
+        float weight = 0.0f;
+        foreach(var item in Item_Pairs)
+        {
+            weight += WeightItem(item.Key);
+        }
+        return weight;
     }
 }
