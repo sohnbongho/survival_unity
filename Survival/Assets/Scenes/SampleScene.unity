@@ -4208,6 +4208,7 @@ RectTransform:
   - {fileID: 1368411923}
   - {fileID: 1541218899}
   - {fileID: 811980959}
+  - {fileID: 1301517723}
   m_Father: {fileID: 630576298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4249,6 +4250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fae0bf19b1ddca4fbe0e902a0762423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BUILDING
+  BuildingPanel: {fileID: 1301517722}
+  Content: {fileID: 1874946945}
 --- !u!114 &1185695694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4803,6 +4806,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1301517723}
+  - component: {fileID: 1301517724}
   m_Layer: 5
   m_Name: Building_Panel
   m_TagString: Untagged
@@ -4817,7 +4821,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301517722}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4827,13 +4831,27 @@ RectTransform:
   - {fileID: 1837760304}
   - {fileID: 510725311}
   - {fileID: 800639366}
-  m_Father: {fileID: 1874946945}
+  m_Father: {fileID: 1185695691}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 200, y: -178.05}
+  m_AnchoredPosition: {x: 200, y: -1726}
   m_SizeDelta: {x: 300, y: 356.1}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1301517724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301517722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5f38e0ec279e9479945d99c745ef0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Building_Panel
+  m_Icon: {fileID: 1536259756}
+  m_Text: {fileID: 1129055107}
 --- !u!1 &1340261851
 GameObject:
   m_ObjectHideFlags: 0
@@ -6883,14 +6901,13 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1301517723}
+  m_Children: []
   m_Father: {fileID: 1286749683}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -2160, y: 356.1}
+  m_SizeDelta: {x: -2460, y: 356.1}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1874946946
 MonoBehaviour:
