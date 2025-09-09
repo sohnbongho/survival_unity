@@ -6,7 +6,7 @@ public class P_Finder : MonoBehaviour
     [SerializeField] private float checkRaduis = 5.0f;
     [SerializeField] private LayerMask interactableLayer; // "object"Layer를 유니티에서 등록해야 한다.
     [SerializeField] Canvas uiCanvas;
-    [SerializeField] private GameObject IconPrefab;
+    [SerializeField] private GameObject IconPrefab;   
 
     [SerializeField] private float activationDistance = 3.0f;
 
@@ -23,15 +23,14 @@ public class P_Finder : MonoBehaviour
     void OnInteractionVoid()
     {
         OnInteraction = true;
-
         transform.LookAt(closetObject.transform.position);
         closetObject = null;
-
         IconInit();
     }
     void OnInteractionOut()
     {
         OnInteraction = false;
+        P_Movement.instance.EquipmentAllDeactive();
         activeIcons.Clear();
     }
 

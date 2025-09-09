@@ -3,7 +3,7 @@ using UnityEngine;
 public class P_Handler : MonoBehaviour
 {
     public static M_Object m_Object = null;
-    [SerializeField] private GameObject HitParticle;
+    [SerializeField] private GameObject HitParticle;    
 
     public void Hit()
     {
