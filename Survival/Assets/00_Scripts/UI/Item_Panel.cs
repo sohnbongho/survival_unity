@@ -11,7 +11,7 @@ public class Item_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public Image Item_Icon;
     public TextMeshProUGUI ItemCountText;
     public TextMeshProUGUI ItemWeightText;
-    INVENTORY parentPanel;
+    public INVENTORY parentPanel;
 
     public void Init(ITEM item, INVENTORY inventory)
     {

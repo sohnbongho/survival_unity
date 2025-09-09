@@ -1,9 +1,15 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
+
+public delegate void onItemGet();
+
 
 public class ItemFlowController : MonoBehaviour
 {
+    public static event onItemGet OnItemGet;
+
     public static Dictionary<int, ITEM> Item_Pairs = new Dictionary<int, ITEM>();
     public static float Player_Weight = 2500.0f;
 
@@ -42,6 +48,7 @@ public class ItemFlowController : MonoBehaviour
         {
             Item_Pairs.Add(ID, item);
         }
+        OnItemGet?.Invoke();
 
     }
     public static bool HaveItem(int value)
