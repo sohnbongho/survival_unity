@@ -8,15 +8,25 @@ public class BUILDING : UIPART
     public Transform Content;
     List<Building_Panel> building_list = new List<Building_Panel>();
 
+    public GameObject ItemClickTap;
+
+    Animator animator;
+
     // Awake -> OnEnable -> Start
     private void Awake()
     {
         Init();
+        animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
     {
         SetBuilding();
+    }
+
+    public void AnimationChange(string temp)
+    {
+        animator.SetTrigger(temp);
     }
 
     private void Init()
@@ -26,7 +36,7 @@ public class BUILDING : UIPART
         {
             var go = Instantiate(BuildingPanel, Content);
             var panel = go.GetComponent<Building_Panel>();
-            panel.Init(buildings[i]);
+            panel.Init(buildings[i], this);
             building_list.Add(panel);
         }
     }
@@ -53,5 +63,12 @@ public class BUILDING : UIPART
         {
             building_list[i].gameObject.SetActive(false);
         }
+    }
+
+    public void SetItemClickAnimation(Building_Panel panel)
+    {
+        ItemClickTap.gameObject.SetActive(true);
+        ItemClickTap.transform.SetParent(panel.transform);
+        ItemClickTap.transform.localPosition = Vector2.zero;
     }
 }
