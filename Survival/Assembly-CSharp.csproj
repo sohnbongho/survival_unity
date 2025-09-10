@@ -76,8 +76,8 @@
     <Compile Include="Assets\00_Scripts\Manager\Building_Mng.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\UIPART.cs" />
     <Compile Include="Assets\00_Scripts\Scriptable\Object_Scriptable.cs" />
-    <Compile Include="Assets\00_Scripts\Main\P_Finder.cs" />
     <Compile Include="Assets\00_Scripts\Building\Building_OBJ.cs" />
+    <Compile Include="Assets\00_Scripts\Main\P_Finder.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\INVENTORY.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Asset_Mng.cs" />

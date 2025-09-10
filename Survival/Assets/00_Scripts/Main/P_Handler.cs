@@ -3,10 +3,13 @@ using UnityEngine;
 public class P_Handler : MonoBehaviour
 {
     public static M_Object m_Object = null;
-    [SerializeField] private GameObject HitParticle;    
+    [SerializeField] private GameObject HitParticle;
 
     public void Hit()
     {
+        if (m_Object == null)
+            return;
+
         m_Object.HP -= 20;
 
         Vector3 pos = new Vector3(

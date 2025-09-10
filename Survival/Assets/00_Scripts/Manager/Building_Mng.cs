@@ -5,12 +5,18 @@ public class Building_Mng : MonoBehaviour
     Camera cam;
     [SerializeField] private float rayDistance = 100.0f;
     [SerializeField] private LayerMask layer;
+    [HideInInspector] public Building_OBJ BuildingObject;
 
-    [HideInInspector] public GameObject BuildingObject;
+    float ignoreTime = 0.3f;
+    float timer;
 
     public void SetBuild(Building_Scriptable m_Data)
     {
-        BuildingObject = Instantiate(m_Data.obj.gameObject);
+        BuildingObject = Instantiate(m_Data.obj);
+        BuildingObject.SetMaterial(Material_Type.Transparent);
+        BuildingObject.SetTrigger(true);
+        BuildingObject.CanBuild = true;
+        timer = Time.time + ignoreTime;
     }
 
     private void Start()
@@ -30,5 +36,20 @@ public class Building_Mng : MonoBehaviour
             BuildingObject.transform.position = hitInfo.point;
         }
 
+        if (Time.time < timer)
+            return;
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (BuildingObject.CanBuild == false)
+                return;
+
+            ConfirmPlacement();
+        }
+    }
+    private void ConfirmPlacement()
+    {
+        BuildingObject.SetTrigger(false);
+        BuildingObject = null;
     }
 }

@@ -1,16 +1,65 @@
 using UnityEngine;
 
+public enum Material_Type
+{
+    Opaque,
+    Transparent,
+}
+
 public class Building_OBJ : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Renderer renderer;
+    Collider collider;
+
+    public Material Opaque_M, Transparent_M;
+    public Color[] Colors;
+    public bool CanBuild = false;
+
+
+    private void Awake()
     {
-        
+        renderer = GetComponentInChildren<Renderer>();
+        collider = GetComponentInChildren<Collider>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetMaterial(Material_Type type)
     {
-        
+        switch (type)
+        {
+            case Material_Type.Opaque:
+                renderer.material = Opaque_M;
+                break;
+            case Material_Type.Transparent:
+                renderer.material = Transparent_M;
+                break;
+        }
+    }
+    public void SetTrigger(bool active)
+    {
+        collider.isTrigger = active;
+    }
+
+    // OnTrigger, OnCollider
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name != "Terrain")
+        {
+            SetMaterial_Color(1);
+            CanBuild = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name != "Terrain")
+        {
+            SetMaterial_Color(0);
+            CanBuild = true;
+        }
+    }
+
+    public void SetMaterial_Color(int value)
+    {
+        renderer.material.SetColor("_EmissionColor", Colors[value]);
     }
 }
