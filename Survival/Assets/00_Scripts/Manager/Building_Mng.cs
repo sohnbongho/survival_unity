@@ -10,9 +10,10 @@ public class Building_Mng : MonoBehaviour
     float ignoreTime = 0.3f;
     float timer;
 
-    public void SetBuild(Building_Scriptable m_Data)
+    public void SetBuild(Building_Scriptable data)
     {
-        BuildingObject = Instantiate(m_Data.obj);
+        BuildingObject = Instantiate(data.obj);
+        BuildingObject.m_Data = data;
         BuildingObject.SetMaterial(Material_Type.Transparent);
         BuildingObject.SetTrigger(true);
         BuildingObject.CanBuild = true;
@@ -50,6 +51,7 @@ public class Building_Mng : MonoBehaviour
     private void ConfirmPlacement()
     {
         BuildingObject.SetTrigger(false);
+        BuildingObject.Confirm();
         BuildingObject = null;
     }
 }

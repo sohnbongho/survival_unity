@@ -46,8 +46,7 @@ public class BUILDING : UIPART
                 break;
             }
         }
-
-        Debug.Log(CanBuild);
+                
         if (CanBuild == false)
             return;
 
