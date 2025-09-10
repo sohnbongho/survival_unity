@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Portal 1
   m_EditorClassIdentifier: Assembly-CSharp::Building_Scriptable
   Name: Portal
-  timer: 60
+  timer: 400
   m_Items:
   - Data: {fileID: 11400000, guid: 97fe3793b07562d4a8ac5e5c3666e5a8, type: 2}
-    Count: 3
+    Count: 10
   - Data: {fileID: 11400000, guid: 256be36d5f3e0ef4f92f9bbeffb5740f, type: 2}
-    Count: 5
+    Count: 15

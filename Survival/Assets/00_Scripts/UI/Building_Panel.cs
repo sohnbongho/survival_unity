@@ -21,7 +21,12 @@ public class Building_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (parentPanel == null)
             return;
 
-        parentPanel.AnimationChange("Click");
+        if (parentPanel.GetClick == false)
+        {
+            parentPanel.GetClick = true;
+            parentPanel.AnimationChange("Click");
+        }
+        parentPanel.GetItemsData(m_Data);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

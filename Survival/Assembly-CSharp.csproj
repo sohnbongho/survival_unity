@@ -84,6 +84,7 @@
     <Compile Include="Assets\00_Scripts\Scriptable\Building_Scriptable.cs" />
     <Compile Include="Assets\00_Scripts\Main\Cam_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Delegate_Holder.cs" />
+    <Compile Include="Assets\00_Scripts\Manager\Utils.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Enum_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Main\M_Object.cs" />
     <Compile Include="Assets\00_Scripts\Manager\ItemFlowController.cs" />
