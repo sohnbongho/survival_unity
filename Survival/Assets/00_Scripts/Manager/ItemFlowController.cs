@@ -59,6 +59,14 @@ public class ItemFlowController : MonoBehaviour
         }
         return false;
     }
+    public static int ItemCount(int value)
+    {
+        if (Item_Pairs.ContainsKey(value))
+        {
+            return Item_Pairs[value].Count;
+        }
+        return 0;
+    }
     public static float WeightItem(int key)
     {
         if (HaveItem(key))
