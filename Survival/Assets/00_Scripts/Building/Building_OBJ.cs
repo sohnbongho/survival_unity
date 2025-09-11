@@ -27,6 +27,7 @@ public class Building_OBJ : MonoBehaviour
     bool getTriggerMaterial = true;
 
     public GameObject Board;
+    public GameObject PortalQuad;
 
     [SerializeField] private UnityEngine.UI.Image IconImage;
     [SerializeField] private Image FillSlilder;
@@ -41,7 +42,15 @@ public class Building_OBJ : MonoBehaviour
     public void Confirm()
     {
         getTriggerMaterial = false;
-        paricle.Play();
+        paricle.Play();        
+
+        // Canvas UI를 카메라로 바라보게
+        Camera mainCamera = Camera.main;
+        Transform parent = Board.transform.parent;
+        parent.eulerAngles = new Vector3 (55.0f,
+            parent.eulerAngles.y - transform.eulerAngles.y, 
+            0f);
+
         Board.SetActive(true);
         IconImage.sprite = Asset_Mng.Get_Atlas(m_Data.Name);
         TitleText.text = m_Data.Name;
@@ -53,6 +62,7 @@ public class Building_OBJ : MonoBehaviour
         SetMaterial(Material_Type.Opaque);
         Board.GetComponent<Animator>().SetTrigger("Out");
         StartCoroutine(CompletedCoroutine());
+        PortalQuad.SetActive(true); // 포탈 이펙트 on
     }
 
     private IEnumerator CompletedCoroutine()
