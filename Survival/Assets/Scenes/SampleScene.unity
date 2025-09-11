@@ -8402,6 +8402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Navagation_Mng
   Content: {fileID: 1340261852}
+  Maximum: 5
 --- !u!1 &2031576895
 GameObject:
   m_ObjectHideFlags: 0
