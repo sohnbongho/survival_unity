@@ -19,6 +19,10 @@ MonoBehaviour:
     m_Key: Portal
     m_Metadata:
       m_Items: []
+  - m_Id: 49633622900736
+    m_Key: Portal_Value
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

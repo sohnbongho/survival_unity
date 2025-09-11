@@ -22,6 +22,19 @@ public class Canvas_Holder : MonoBehaviour
         }
     }
     private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
+    Popup_Description popup;
+
+    public Popup_Description GetPopUp()
+    {
+        if(popup != null)
+        {
+            Destroy(popup.gameObject);
+        }
+
+        popup = Instantiate(Resources.Load<Popup_Description>("Prefab/PopUp"), transform);
+        return popup;
+    }
+
     public void OpenUI(string uiName)
     {
         if (uiParts.ContainsKey(uiName))

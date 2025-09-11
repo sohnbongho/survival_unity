@@ -22,6 +22,10 @@ MonoBehaviour:
     m_Localized: Portal
     m_Metadata:
       m_Items: []
+  - m_Id: 49633622900736
+    m_Localized: Portal_Value
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

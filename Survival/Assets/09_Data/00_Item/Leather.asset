@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d6959b78f06814f8e1c13c8b9be193, type: 3}
   m_Name: Leather
   m_EditorClassIdentifier: Assembly-CSharp::Item_Scriptable
+  Key: Leather
   ItemID: 10004
-  ItemName: Leather
-  Description: "\uACE0\uC57D\uD55C \uB0C4\uC0C8\uAC00 \uD48D\uAE30\uB294 \uAC00\uC8FD"
   Type: 2
   rarity: 1
   Weight: 3

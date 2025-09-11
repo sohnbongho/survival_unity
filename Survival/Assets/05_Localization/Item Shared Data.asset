@@ -43,6 +43,22 @@ MonoBehaviour:
     m_Key: ThunderWood
     m_Metadata:
       m_Items: []
+  - m_Id: 53685572222976
+    m_Key: FireWood_Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53808968646656
+    m_Key: Crystal_Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53921908670464
+    m_Key: Stone_Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54037319139328
+    m_Key: ThunderWood_Value
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

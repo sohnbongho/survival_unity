@@ -52,8 +52,8 @@ public class Building_OBJ : MonoBehaviour
             0f);
 
         Board.SetActive(true);
-        IconImage.sprite = Asset_Mng.Get_Atlas(m_Data.Name);
-        TitleText.text = m_Data.Name;
+        IconImage.sprite = Asset_Mng.Get_Atlas(m_Data.Key);
+        TitleText.text = m_Data.Key;
         SetBuildData(m_Data.timer, BuildCompleted);
     }
 

@@ -61,6 +61,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.2f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\00_Scripts\UI\Popup_Description.cs" />
     <Compile Include="Assets\00_Scripts\Scriptable\Item_Scriptable.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\BUILDING.cs" />
     <Compile Include="Assets\00_Scripts\Particle_Handler.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Assets\00_Scripts\Manager\Delegate_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Utils.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Enum_Holder.cs" />
+    <Compile Include="Assets\00_Scripts\Scriptable\Scriptable_Base.cs" />
     <Compile Include="Assets\00_Scripts\Main\M_Object.cs" />
     <Compile Include="Assets\00_Scripts\Manager\ItemFlowController.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Base_Mng.cs" />

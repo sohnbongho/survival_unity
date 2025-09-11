@@ -46,6 +46,22 @@ MonoBehaviour:
     m_Localized: ThunderWood
     m_Metadata:
       m_Items: []
+  - m_Id: 53685572222976
+    m_Localized: FireWood_Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53808968646656
+    m_Localized: Crystal_Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 53921908670464
+    m_Localized: Stone_Value
+    m_Metadata:
+      m_Items: []
+  - m_Id: 54037319139328
+    m_Localized: ThunderWood_Value
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

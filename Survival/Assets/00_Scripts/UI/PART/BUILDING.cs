@@ -40,7 +40,7 @@ public class BUILDING : UIPART
         for (int i = 0; i < BuildingObj.m_Items.Count; i++)
         {
             ITEM item = BuildingObj.m_Items[i];
-            if (ItemFlowController.ItemCount(item.Data.ItemID) < item.Count)
+            if (ItemFlowController.ItemCount(item.Data.Key) < item.Count)
             {
                 CanBuild = false;
                 break;
@@ -73,16 +73,16 @@ public class BUILDING : UIPART
 
             var go = Instantiate(Building_Item, Item_Content);
             go.transform.GetComponentInChildren<Image>().sprite
-                = Asset_Mng.Get_Atlas(itemData.ItemID.ToString());
+                = Asset_Mng.Get_Atlas(itemData.Key);
 
             var goText = go.transform.GetComponentInChildren<TextMeshProUGUI>();
 
             goText.text =
                 string.Format("({0}/{1})",
                 data.m_Items[i].Count,
-                ItemFlowController.ItemCount(itemData.ItemID));
+                ItemFlowController.ItemCount(itemData.Key));
 
-            bool MoreItem = ItemFlowController.ItemCount(itemData.ItemID) >= data.m_Items[i].Count;
+            bool MoreItem = ItemFlowController.ItemCount(itemData.Key) >= data.m_Items[i].Count;
 
             goText.color = MoreItem ? Color.green : Color.red;
             go.gameObject.SetActive(true);
