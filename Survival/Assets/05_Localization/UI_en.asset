@@ -38,6 +38,14 @@ MonoBehaviour:
     m_Localized: Price
     m_Metadata:
       m_Items: []
+  - m_Id: 61181045129216
+    m_Localized: Confirm
+    m_Metadata:
+      m_Items: []
+  - m_Id: 61293486030848
+    m_Localized: Build_Completed
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

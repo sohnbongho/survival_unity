@@ -42,19 +42,20 @@ public class Building_OBJ : MonoBehaviour
     public void Confirm()
     {
         getTriggerMaterial = false;
-        paricle.Play();        
+        paricle.Play();
 
         // Canvas UI를 카메라로 바라보게
         Camera mainCamera = Camera.main;
         Transform parent = Board.transform.parent;
-        parent.eulerAngles = new Vector3 (55.0f,
-            parent.eulerAngles.y - transform.eulerAngles.y, 
+        parent.eulerAngles = new Vector3(55.0f,
+            parent.eulerAngles.y - transform.eulerAngles.y,
             0f);
 
         Board.SetActive(true);
         IconImage.sprite = Asset_Mng.Get_Atlas(m_Data.Key);
         TitleText.text = m_Data.Key;
         SetBuildData(m_Data.timer, BuildCompleted);
+        Navagation_Mng.instance.PanelGet_Toast(m_Data, "Confirm");
     }
 
     private void BuildCompleted()
@@ -63,6 +64,7 @@ public class Building_OBJ : MonoBehaviour
         Board.GetComponent<Animator>().SetTrigger("Out");
         StartCoroutine(CompletedCoroutine());
         PortalQuad.SetActive(true); // 포탈 이펙트 on
+        Navagation_Mng.instance.PanelGet_Toast(m_Data, "Build_Completed");
     }
 
     private IEnumerator CompletedCoroutine()

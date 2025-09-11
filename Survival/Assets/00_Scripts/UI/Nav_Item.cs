@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,12 @@ public class Nav_Item : MonoBehaviour
 
         ItemName_Name_Text.text = Utils.Localization_Text(String_Table.Item, m_Data.Key)
             + "x" + count.ToString();
+    }
+
+    public void Init_Building(Scriptable_Base data, string key)
+    {
+        Item_Icon_Image.sprite = Asset_Mng.Get_Atlas(data.Key);
+        ItemName_Name_Text.text = Utils.Localization_Text(String_Table.UI, key);            
     }
 
 
