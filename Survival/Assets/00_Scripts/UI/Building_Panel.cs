@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Building_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
@@ -35,6 +36,7 @@ public class Building_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
             return;
 
         parentPanel.SetItemClickAnimation(this);
+        Canvas_Holder.instance.GetPopUp().Set_PopUP(String_Table.Building, m_Data.Key, eventData.position);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -46,6 +48,8 @@ public class Building_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             parentPanel.ItemClickTap.SetActive(false);
         }
+
+        Canvas_Holder.instance.DestroyPopUp();
     }
 
     public void SetData()

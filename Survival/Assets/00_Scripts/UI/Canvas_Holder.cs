@@ -24,12 +24,17 @@ public class Canvas_Holder : MonoBehaviour
     private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
     Popup_Description popup;
 
-    public Popup_Description GetPopUp()
+    public void DestroyPopUp()
     {
-        if(popup != null)
+        if (popup != null)
         {
             Destroy(popup.gameObject);
         }
+    }
+
+    public Popup_Description GetPopUp()
+    {
+        DestroyPopUp();
 
         popup = Instantiate(Resources.Load<Popup_Description>("Prefab/PopUp"), transform);
         return popup;
@@ -57,11 +62,14 @@ public class Canvas_Holder : MonoBehaviour
             Debug.LogWarning($"UI {uiName} not found.");
         }
     }
-    public void CloseAllUI()
+    public void CloseAllUI(string name = "")
     {
-        foreach (var part in uiParts.Values)
+        foreach (var part in uiParts)
         {
-            part.Close();
+            if (name != part.Key)
+            {
+                part.Value.Close();
+            }
         }
     }
 
@@ -70,7 +78,7 @@ public class Canvas_Holder : MonoBehaviour
         // true: 비활성화 된 오브젝트도 찾는다.
         UIPART[] parts = UI_PART_PARENT.GetComponentsInChildren<UIPART>(true);
         foreach (var part in parts)
-        {            
+        {
             uiParts.Add(part.name, part);
         }
 
@@ -79,14 +87,18 @@ public class Canvas_Holder : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            uiParts["INVENTORY"].Toggle();            
-        }
+        CheckUI(KeyCode.I, "INVENTORY");
+        CheckUI(KeyCode.B, "BUILDING");
+    }
 
-        if (Input.GetKeyDown(KeyCode.B))
+    private void CheckUI(KeyCode key, string uiName)
+    {
+        if (Input.GetKeyDown(key))
         {
-            uiParts["BUILDING"].Toggle();            
+            CloseAllUI(uiName);
+            DestroyPopUp();
+
+            uiParts[uiName].Toggle();
         }
     }
 

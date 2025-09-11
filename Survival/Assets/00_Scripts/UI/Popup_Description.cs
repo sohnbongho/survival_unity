@@ -14,6 +14,14 @@ public class Popup_Description : MonoBehaviour
         rect = GetComponent<RectTransform>();
     }
 
+    //private void Update()
+    //{
+    //    if (Input.GetMouseButtonDown(0))
+    //    {
+    //        Canvas_Holder.instance.DestroyPopUp();
+    //    }
+    //}
+
     public void Set_PopUP(String_Table type, string key, Vector2 pos)
     {
         // toolip 오브젝트가 밖으로 나가는 것을 방지하기 위한 코드

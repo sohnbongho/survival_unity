@@ -38,6 +38,8 @@ public class Item_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         {
             parentPanel.ItemClickTap.SetActive(false);
         }
+
+        Canvas_Holder.instance.DestroyPopUp();
     }
 
     public void SetItem()
