@@ -223,13 +223,14 @@ GameObject:
   - component: {fileID: 3343730627923516971}
   - component: {fileID: 8996434488961436252}
   - component: {fileID: 3704055542968134245}
+  - component: {fileID: 1823312902149968869}
   m_Layer: 0
   m_Name: Board
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5435668638233014287
 RectTransform:
   m_ObjectHideFlags: 0
@@ -313,6 +314,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1823312902149968869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415805561260861338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af9afdebd5d9fe48a67304a530482f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Animation_Handler
 --- !u!1 &6364444884468820398
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2583090867321693860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -730,7 +743,7 @@ Transform:
   m_GameObject: {fileID: 8518645170375671220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.63, y: 5.39, z: 0}
+  m_LocalPosition: {x: -16.94622, y: 3.00311, z: 5.42045}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -760,7 +773,7 @@ MonoBehaviour:
   - {r: 0, g: 0.03529412, b: 1, a: 1}
   - {r: 0.99215686, g: 0.38431373, b: 0.38431373, a: 0}
   CanBuild: 1
-  Board: {fileID: 6364444884468820398}
+  Board: {fileID: 3415805561260861338}
   IconImage: {fileID: 2080823177048233017}
   FillSlilder: {fileID: 2530689216874519867}
   TitleText: {fileID: 7254877184802390781}

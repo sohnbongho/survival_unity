@@ -4,6 +4,7 @@ public class Building_Mng : MonoBehaviour
 {
     Camera cam;
     [SerializeField] private float rayDistance = 100.0f;
+    [SerializeField] private float rotationSpeed;
     [SerializeField] private LayerMask layer;
     [HideInInspector] public Building_OBJ BuildingObject;
 
@@ -35,6 +36,12 @@ public class Building_Mng : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hitInfo, rayDistance, layer))
         {
             BuildingObject.transform.position = hitInfo.point;
+        }
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0f)
+        {
+            BuildingObject.transform.Rotate(0f, scroll * rotationSpeed * Time.deltaTime, 0f);
         }
 
         if (Time.time < timer)
