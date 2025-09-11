@@ -1,3 +1,9 @@
+public enum String_Table
+{
+    Item,
+    Building,
+}
+
 public enum Build_Type
 {
     Portal
@@ -24,3 +30,4 @@ public enum Rarity
     Hero,
     Legendary,
 }
+

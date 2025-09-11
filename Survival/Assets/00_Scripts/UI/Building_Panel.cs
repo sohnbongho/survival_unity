@@ -52,7 +52,7 @@ public class Building_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         gameObject.SetActive(true);
         m_Icon.sprite = Asset_Mng.Get_Atlas(m_Data.Name);
-        m_Text.text = m_Data.Name;
+        m_Text.text = Utils.Localization_Text(String_Table.Building, m_Data.Name);
     }
 
     // OnEnable -> 오브젝트가 액티브값이 활성화 됐을때

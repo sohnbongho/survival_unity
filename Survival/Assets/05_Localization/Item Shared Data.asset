@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Item Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: Item
+  m_TableCollectionNameGuidString: 57e589f5e0a4b12459b729f0508639e6
+  m_Entries:
+  - m_Id: 71172505600
+    m_Key: FireWood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 137153101824
+    m_Key: Crystal
+    m_Metadata:
+      m_Items: []
+  - m_Id: 231071956992
+    m_Key: Feather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 238214856704
+    m_Key: Leather
+    m_Metadata:
+      m_Items: []
+  - m_Id: 253968662528
+    m_Key: Monster_Energy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 274034212864
+    m_Key: Stone
+    m_Metadata:
+      m_Items: []
+  - m_Id: 285568548864
+    m_Key: ThunderWood
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 6742834473673425111
+  references:
+    version: 2
+    RefIds:
+    - rid: 6742834473673425111
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1757558441701
