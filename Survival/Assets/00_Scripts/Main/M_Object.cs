@@ -14,6 +14,7 @@ public class M_Object : MonoBehaviour
     }
     public virtual void OnHit()
     {
+        Canvas_Holder.instance.GetBoard();
         HP_Init();
     }
 

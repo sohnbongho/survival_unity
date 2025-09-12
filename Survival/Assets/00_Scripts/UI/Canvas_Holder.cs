@@ -82,7 +82,7 @@ public class Canvas_Holder : MonoBehaviour
             uiParts.Add(part.name, part);
         }
 
-        Delegate_Holder.OnInteraction += GetBoard;
+        //Delegate_Holder.OnInteraction += GetBoard;
         Delegate_Holder.OnInteractionOut += BoardOut;
     }
     private void Update()
@@ -104,7 +104,10 @@ public class Canvas_Holder : MonoBehaviour
 
     public void GetBoard()
     {
-        Board.SetActive(true);
+        if (Board.activeSelf == false)
+        {
+            Board.SetActive(true);
+        }
     }
 
     public void BoardOut() => Board.GetComponent<UI_Animation_Handler>().AnimationChange("Out");
