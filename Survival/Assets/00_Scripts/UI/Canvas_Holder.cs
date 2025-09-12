@@ -94,9 +94,23 @@ public class Canvas_Holder : MonoBehaviour
         CheckUI(KeyCode.I, "INVENTORY");
         CheckUI(KeyCode.B, "BUILDING");
     }
+    public void GetText(string temp, Color color)
+    {
+        Vector3 posReal = P_Movement.instance.transform.position;
+
+        posReal.y += 0.5f;
+        posReal.x += Random.Range(-0.5f, 0.5f);
+        posReal.z += Random.Range(-0.5f, 0.5f);
+
+        var go = Instantiate(Resources.Load<GameObject>("TextObject"), posReal, Quaternion.Euler(55, 0, 0));
+
+        TextMeshPro textObj = go.GetComponent<TextMeshPro>();
+        textObj.color = color;
+        textObj.text = temp;
+    }
 
     private void StaminaCheck(int value)
-    {        
+    {
         StaminaText.text = Base_Mng.instance.Game.Stamina + "/" + Base_Mng.instance.Game.MaxStamina;
         StaminaFill.fillAmount = Base_Mng.instance.Game.Stamina / (float)Base_Mng.instance.Game.MaxStamina;
     }
