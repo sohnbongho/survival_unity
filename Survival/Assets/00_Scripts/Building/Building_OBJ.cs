@@ -1,3 +1,4 @@
+using Mono.Cecil;
 using System;
 using System.Collections;
 using TMPro;
@@ -13,14 +14,13 @@ public enum Material_Type
 
 public class Building_OBJ : MonoBehaviour
 {
-    public Building_Scriptable m_Data;
+    [HideInInspector] public Building_Scriptable m_Data;
     [SerializeField] private ParticleSystem paricle;
-    public Build_Type type;
+
     Renderer renderer;
     Collider collider;
-
-    public Material Opaque_M, Transparent_M;
-    public Color[] Colors;
+    private Material Opaque_M, Transparent_M;
+    private Color[] Colors = { new Color(0.0f, 0.02415333f, 0.7490197f, 1.0f), new Color(1.0f, 0.2688679f, 0.2688679f, 1.0f) };
 
     public bool CanBuild = true;
     bool Completed = false;
@@ -36,6 +36,9 @@ public class Building_OBJ : MonoBehaviour
 
     private void Awake()
     {
+        Opaque_M = Resources.Load<Material>("Opaque_M");
+        Transparent_M = Resources.Load<Material>("Transparent_M");
+
         renderer = GetComponentInChildren<Renderer>();
         collider = GetComponentInChildren<Collider>();
     }

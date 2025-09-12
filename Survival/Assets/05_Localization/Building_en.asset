@@ -26,6 +26,14 @@ MonoBehaviour:
     m_Localized: Portal_Value
     m_Metadata:
       m_Items: []
+  - m_Id: 329488818126848
+    m_Localized: BonFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 329564495953920
+    m_Localized: BonFire_Value
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

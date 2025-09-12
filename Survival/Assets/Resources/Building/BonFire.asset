@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7225b79b276bd794bb45febb52b536e8, type: 3}
+  m_Name: BonFire
+  m_EditorClassIdentifier: Assembly-CSharp::Building_Scriptable
+  Key: BonFire
+  timer: 3
+  m_Items:
+  - Data: {fileID: 11400000, guid: 97fe3793b07562d4a8ac5e5c3666e5a8, type: 2}
+    Count: 3
+  - Data: {fileID: 11400000, guid: d4ad6e91e3f77014abce373b364c8b47, type: 2}
+    Count: 1
+  obj: {fileID: 8511934579022862445, guid: e8526f2a635ae9b41945f0780cf62072, type: 3}
