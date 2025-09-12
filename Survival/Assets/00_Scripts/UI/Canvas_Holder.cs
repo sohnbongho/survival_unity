@@ -98,7 +98,7 @@ public class Canvas_Holder : MonoBehaviour
     {
         Vector3 posReal = P_Movement.instance.transform.position;
 
-        posReal.y += 0.5f;
+        posReal.y += 3.0f;
         posReal.x += Random.Range(-0.5f, 0.5f);
         posReal.z += Random.Range(-0.5f, 0.5f);
 
