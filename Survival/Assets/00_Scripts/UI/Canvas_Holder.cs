@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class Canvas_Holder : MonoBehaviour
     [SerializeField] private Transform UI_PART_PARENT;
     [SerializeField] private GameObject Board;
     [SerializeField] private GameObject InventoryPanel;
+    [SerializeField] private TextMeshProUGUI StaminaText;
+    [SerializeField] private Image StaminaFill;
 
     public Image BoardHpFill, BoardHpWhiteFill;
     Coroutine F_Coroutine;
@@ -84,11 +87,18 @@ public class Canvas_Holder : MonoBehaviour
 
         //Delegate_Holder.OnInteraction += GetBoard;
         Delegate_Holder.OnInteractionOut += BoardOut;
+        Delegate_Holder.OnStamina += StaminaCheck;
     }
     private void Update()
     {
         CheckUI(KeyCode.I, "INVENTORY");
         CheckUI(KeyCode.B, "BUILDING");
+    }
+
+    private void StaminaCheck(int value)
+    {        
+        StaminaText.text = Base_Mng.instance.Game.Stamina + "/" + Base_Mng.instance.Game.MaxStamina;
+        StaminaFill.fillAmount = Base_Mng.instance.Game.Stamina / (float)Base_Mng.instance.Game.MaxStamina;
     }
 
     private void CheckUI(KeyCode key, string uiName)

@@ -7,6 +7,20 @@ public class M_Object : MonoBehaviour
     public int HP;
     public Item Item_Prefab;
 
+    private void Start()
+    {
+        Delegate_Holder.OnInteractionOut += OutInteraction;
+    }
+    private void OnDestroy()
+    {
+        Delegate_Holder.OnInteractionOut -= OutInteraction;
+    }
+
+    public virtual void OutInteraction()
+    {
+
+    }
+
     public virtual void Interaction()
     {
         P_Handler.m_Object = this;
@@ -15,6 +29,8 @@ public class M_Object : MonoBehaviour
     public virtual void OnHit()
     {
         Canvas_Holder.instance.GetBoard();
+        Base_Mng.instance.Game.SetStamina(-10);
+
         HP_Init();
     }
 
@@ -22,10 +38,8 @@ public class M_Object : MonoBehaviour
     {
         if (HP <= 0)
         {
-            HP = 0;
-
+            HP = 0;            
             Particle_Handler.instance.OnParticle(transform.GetChild(0).GetComponent<MeshRenderer>());
-
             Canvas_Holder.instance.AllStopCoroutine();
             Canvas_Holder.instance.BoardHpWhiteFill.fillAmount = 1.0f;
 

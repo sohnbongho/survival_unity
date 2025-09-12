@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BonFire : M_Object
@@ -6,5 +7,21 @@ public class BonFire : M_Object
     {
         base.Interaction();
         P_Movement.instance.AnimationChange("Sitting");
+        StartCoroutine(BonFireCoroutine());
     }
+    public override void OutInteraction()
+    {
+        base.OutInteraction();
+        StopAllCoroutines();
+    }
+
+    IEnumerator BonFireCoroutine()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Base_Mng.instance.Game.SetStamina(10);
+
+        StartCoroutine(BonFireCoroutine());
+    }
+
+    
 }
