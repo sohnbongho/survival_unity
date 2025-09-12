@@ -11,7 +11,6 @@ public class M_Object : MonoBehaviour
     {
         P_Handler.m_Object = this;
         GetInteraction = true;
-        HP_Init();
     }
     public virtual void OnHit()
     {
@@ -25,13 +24,13 @@ public class M_Object : MonoBehaviour
             HP = 0;
 
             Particle_Handler.instance.OnParticle(transform.GetChild(0).GetComponent<MeshRenderer>());
-            
+
             Canvas_Holder.instance.AllStopCoroutine();
-            Canvas_Holder.instance.BoardHpWhiteFill.fillAmount = 1.0f;            
+            Canvas_Holder.instance.BoardHpWhiteFill.fillAmount = 1.0f;
 
             // 파괴 되기전에 위치를 보낸다.
             Destroy(this.gameObject);
-            Delegate_Holder.OnOutInteraction();            
+            Delegate_Holder.OnOutInteraction();
             return;
         }
         Canvas_Holder.instance.BoardFill(HP, m_Data.HP);

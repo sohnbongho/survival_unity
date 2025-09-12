@@ -62,8 +62,19 @@ public class P_Finder : MonoBehaviour
             ShowIcon(closetObject);
             if (Input.GetKeyDown(KeyCode.F))
             {
+                M_Object subObject = null;
+                if(closetObject.GetComponent<M_Object>() == null)
+                {
+                    subObject = closetObject.transform.parent.GetComponent<M_Object>();
+                }
+                else
+                {
+                    subObject = closetObject.GetComponent<M_Object>();                    
+                }
+
+                subObject.Interaction();
                 //Debug.Log("오브젝트 상호작용!");
-                closetObject.GetComponent<M_Object>().Interaction();
+
                 Delegate_Holder.OnStartInteraction();
             }
         }

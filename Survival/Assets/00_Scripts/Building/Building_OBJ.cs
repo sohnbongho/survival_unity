@@ -1,9 +1,9 @@
-using Mono.Cecil;
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+
 
 
 public enum Material_Type
@@ -20,6 +20,7 @@ public class Building_OBJ : MonoBehaviour
     Renderer renderer;
     Collider collider;
     private Material Opaque_M, Transparent_M;
+    public Material OriginalMaterial;
     private Color[] Colors = { new Color(0.0f, 0.02415333f, 0.7490197f, 1.0f), new Color(1.0f, 0.2688679f, 0.2688679f, 1.0f) };
 
     public bool CanBuild = true;
@@ -29,19 +30,20 @@ public class Building_OBJ : MonoBehaviour
     public GameObject Board;
     public GameObject PortalQuad;
 
-    [SerializeField] private UnityEngine.UI.Image IconImage;
+    [SerializeField] private Image IconImage;
     [SerializeField] private Image FillSlilder;
     [SerializeField] private TextMeshProUGUI TitleText;
     [SerializeField] private TextMeshProUGUI PercentageText;
 
     private void Awake()
     {
-        Opaque_M = Resources.Load<Material>("Opaque_M");
-        Transparent_M = Resources.Load<Material>("Transparent_M");
-
         renderer = GetComponentInChildren<Renderer>();
         collider = GetComponentInChildren<Collider>();
+
+        Opaque_M = Resources.Load<Material>("Opaque_M");
+        Transparent_M = Resources.Load<Material>("Transparent_M");        
     }
+
     public void Confirm()
     {
         getTriggerMaterial = false;
@@ -66,8 +68,7 @@ public class Building_OBJ : MonoBehaviour
         SetMaterial(Material_Type.Opaque);
         Board.GetComponent<Animator>().SetTrigger("Out");
         StartCoroutine(CompletedCoroutine());
-        PortalQuad.SetActive(true); // Æ÷Å» ÀÌÆåÆ® on
-        Navagation_Mng.instance.PanelGet_Toast(m_Data, "Build_Completed");
+        PortalQuad.SetActive(true); // Æ÷Å» ÀÌÆåÆ® on                
     }
 
     private IEnumerator CompletedCoroutine()
@@ -102,6 +103,15 @@ public class Building_OBJ : MonoBehaviour
             yield return null;
         }
         Completed = true;
+
+        // ¿ÀºêÁ§Æ® ¿Ï¼º ¾Ë¸²
+        Navagation_Mng.instance.PanelGet_Toast(m_Data, "Build_Completed");
+        // Layer º¯°æ
+        collider.gameObject.layer = LayerMask.NameToLayer("Object");
+        if (OriginalMaterial != null)
+        {
+            renderer.material = OriginalMaterial;
+        }
     }
 
 

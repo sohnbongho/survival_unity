@@ -5117,7 +5117,7 @@ GameObject:
   - component: {fileID: 7624037556136781877}
   - component: {fileID: 4426798349731714284}
   - component: {fileID: 104332880753245864}
-  - component: {fileID: 477024907314414215}
+  - component: {fileID: 5151157004315687201}
   m_Layer: 0
   m_Name: Bonfire
   m_TagString: Untagged
@@ -5197,8 +5197,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &477024907314414215
-MeshCollider:
+--- !u!65 &5151157004315687201
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -5215,10 +5215,9 @@ MeshCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1030068964559603793, guid: d37853fdcbf707043b538d916b30f026, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 1.1234668, y: 0.35238594, z: 1.1010199}
+  m_Center: {x: -0.011223853, y: 0.8, z: 0.01132223}
 --- !u!1 &1772373832550813154
 GameObject:
   m_ObjectHideFlags: 0
@@ -5534,6 +5533,7 @@ GameObject:
   - component: {fileID: 7092713488235507058}
   - component: {fileID: 8511934579022862445}
   - component: {fileID: 8921294182677759353}
+  - component: {fileID: -8214776640023755434}
   m_Layer: 0
   m_Name: BonFire
   m_TagString: Untagged
@@ -5573,6 +5573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Building_OBJ
   m_Data: {fileID: 0}
   paricle: {fileID: 493751531394403421}
+  OriginalMaterial: {fileID: 2100000, guid: 62e810d40a8a12f40b9b2683a83523dd, type: 2}
   CanBuild: 1
   Board: {fileID: 7033491190985852732}
   PortalQuad: {fileID: 231629674732089672}
@@ -5603,10 +5604,26 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-8214776640023755434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116833585159787343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b6dfc982e64974bafca4d15870a1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BonFire
+  m_Data: {fileID: 0}
+  GetInteraction: 0
+  HP: 0
+  Item_Prefab: {fileID: 0}
 --- !u!1 &4225935296552221329
 GameObject:
   m_ObjectHideFlags: 0
