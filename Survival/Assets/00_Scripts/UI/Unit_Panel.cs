@@ -3,16 +3,16 @@ using UnityEngine.EventSystems;
 
 public class Unit_Panel : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
+    public Unit_Scriptable m_Data;
+    private PORTAL parentPanel;
 
+    public void Init(PORTAL parent_Data)
+    {
+        parentPanel = parent_Data;
     }
-
-    // Update is called once per frame
-    void Update()
+    public void SetData()
     {
-
+        parentPanel.SetData(m_Data, this);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

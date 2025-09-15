@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,7 @@ public class Canvas_Holder : MonoBehaviour
         }
     }
     private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
+    public static Queue<UIPART> Uis = new Queue<UIPART>();
     Popup_Description popup;
 
     public UIPART GetUIPART(string name)
@@ -35,6 +37,7 @@ public class Canvas_Holder : MonoBehaviour
         }
         var uiPart = Instantiate(Resources.Load<UIPART>("UI/" + name), UI_PART_PARENT);
         uiParts.Add(name, uiPart);
+        uiPart.gameObject.SetActive(false);
         return uiPart;
     }
 

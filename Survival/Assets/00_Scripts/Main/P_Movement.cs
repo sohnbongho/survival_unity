@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
 public class P_Movement : MonoBehaviour
@@ -68,10 +69,15 @@ public class P_Movement : MonoBehaviour
     {
         if (Finder.OnInteraction)
         {
-            if (Input.anyKeyDown && false == Input.GetKeyDown(KeyCode.F))
+            if (Input.anyKeyDown && false == Input.GetKeyDown(KeyCode.F) 
+                && !EventSystem.current.IsPointerOverGameObject(0)) // UI 를 클릭했을떄는 동작하지 않음
             {
                 Delegate_Holder.OnOutInteraction();
-            }
+            }            
+            return;
+        }
+        if (Canvas_Holder.Uis.Count > 0)
+        {
             return;
         }
 

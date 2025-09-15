@@ -7,6 +7,7 @@ public class UIPART : MonoBehaviour
     public virtual void Open()
     {
         gameObject.SetActive(true);
+        Canvas_Holder.Uis.Enqueue(this);
 
     }
     public virtual void Close()
@@ -16,6 +17,7 @@ public class UIPART : MonoBehaviour
             Debug.LogWarning($"Not acitive this UI.");
             return;
         }
+        Canvas_Holder.Uis.Dequeue();
 
         if (GetComponent<Animator>() != null)
         {

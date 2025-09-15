@@ -6,5 +6,6 @@ public class Portal : M_Object
     {
         base.Interaction();
         part = Canvas_Holder.instance.GetUIPART("PORTAL");
+        part.Open();
     }
 }
