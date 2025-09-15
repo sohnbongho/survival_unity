@@ -21,4 +21,9 @@ public class Utils : MonoBehaviour
     {
         return parent.Find(key).GetComponent<T>();
     }
+    
+    public static void SetLayer(string layer, GameObject obj)
+    {
+        obj.layer = LayerMask.NameToLayer(layer);
+    }
 }

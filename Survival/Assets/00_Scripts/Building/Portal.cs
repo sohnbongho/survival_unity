@@ -1,6 +1,6 @@
 public class Portal : M_Object
 {
-    UIPART part = null;
+    UIPART part = null;    
 
     public override void Interaction()
     {

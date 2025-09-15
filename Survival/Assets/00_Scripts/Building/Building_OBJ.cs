@@ -35,6 +35,8 @@ public class Building_OBJ : MonoBehaviour
     [SerializeField] private TextMeshProUGUI TitleText;
     [SerializeField] private TextMeshProUGUI PercentageText;
 
+    public bool Working = false;
+
     private void Awake()
     {
         renderer = GetComponentInChildren<Renderer>();
@@ -106,8 +108,9 @@ public class Building_OBJ : MonoBehaviour
 
         // 오브젝트 완성 알림
         Navagation_Mng.instance.PanelGet_Toast(m_Data, "Build_Completed");
-        // Layer 변경
-        collider.gameObject.layer = LayerMask.NameToLayer("Object");
+        // Layer 변경        
+        Utils.SetLayer("Object", collider.gameObject);
+
         if (OriginalMaterial != null)
         {
             renderer.material = OriginalMaterial;
@@ -119,9 +122,10 @@ public class Building_OBJ : MonoBehaviour
         Board.SetActive(true);
         IconImage.sprite = Asset_Mng.Get_Atlas(key);
         TitleText.text = Utils.Localization_Text(String_Table.Unit, key);
+
+        Utils.SetLayer("WorkObject", collider.gameObject);
         SetBuildData(timer, action);
     }
-
 
     public void SetBuildData(float time, Action action)
     {

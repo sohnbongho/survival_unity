@@ -69,6 +69,7 @@
     <Compile Include="Assets\00_Scripts\Main\P_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Main\Item.cs" />
     <Compile Include="Assets\00_Scripts\UI\Unit_Panel.cs" />
+    <Compile Include="Assets\00_Scripts\Main\Worker.cs" />
     <Compile Include="Assets\00_Scripts\UI\Navagation_Mng.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Game_Mng.cs" />
     <Compile Include="Assets\00_Scripts\UI\Item_Panel.cs" />
