@@ -27,6 +27,17 @@ public class Canvas_Holder : MonoBehaviour
     private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
     Popup_Description popup;
 
+    public UIPART GetUIPART(string name)
+    {
+        if (uiParts.ContainsKey(name))
+        {
+            return uiParts[name];
+        }
+        var uiPart = Instantiate(Resources.Load<UIPART>("UI/" + name), UI_PART_PARENT);
+        uiParts.Add(name, uiPart);
+        return uiPart;
+    }
+
     public void DestroyPopUp()
     {
         if (popup != null)
