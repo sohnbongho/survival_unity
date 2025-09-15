@@ -41,4 +41,12 @@ public class Chracter : MonoBehaviour
     {
         animator.SetTrigger(temp);
     }
+    public virtual void EquipmentAllDeactive()
+    {
+        for (int i = 0; i < Equipments.Length; i++)
+        {
+            Equipments[i].SetActive(false);
+        }
+
+    }
 }

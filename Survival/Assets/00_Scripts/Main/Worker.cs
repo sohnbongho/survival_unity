@@ -32,10 +32,11 @@ public class Worker : Chracter
         if (m_State == State.MOVE)
         {
             animator.SetFloat("a_Speed", agent.velocity.magnitude);
-            if (agent.remainingDistance <= 1.0f)
+            if (agent.remainingDistance <= 1.5f)
             {
                 StateChange(State.Arrived);
             }
+
         }
 
     }
@@ -46,11 +47,11 @@ public class Worker : Chracter
         switch (m_State)
         {
             case State.IDLE:
+                EquipmentAllDeactive();
                 animator.SetBool("NoneInteraction", false);
                 StartCoroutine(LookAtTarget());
                 break;
             case State.MOVE:
-
                 break;
             case State.Arrived:
                 {
@@ -67,7 +68,8 @@ public class Worker : Chracter
                     subObject.Interaction(GetComponent<Chracter>());
 
                     animator.SetBool("NoneInteraction", true);
-                    animator.SetFloat("a_Speed", 0.0f); //             
+                    animator.SetFloat("a_Speed", 0.0f); //
+                    transform.LookAt(closetObject.transform);
                     StateChange(State.Interaction);
                 }
                 break;
@@ -83,11 +85,17 @@ public class Worker : Chracter
         while (closetObject == null)
         {
             FindClosetTarget();
-            yield return null;
+            yield return new WaitForSeconds(0.5f);
         }
+        var targetPosition = new Vector3(closetObject.position.x,
+            transform.position.y,
+            closetObject.position.z);
+
+        agent.SetDestination(targetPosition);
+
+        yield return new WaitForSeconds(0.02f);
 
         StateChange(State.MOVE);
-        agent.SetDestination(closetObject.position);
     }
 
 

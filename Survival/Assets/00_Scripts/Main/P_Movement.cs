@@ -26,14 +26,7 @@ public class P_Movement : Chracter
     }
 
 
-    public void EquipmentAllDeactive()
-    {
-        for (int i = 0; i < Equipments.Length; i++)
-        {
-            Equipments[i].SetActive(false);
-        }
-
-    }    
+     
 
     public override void Start()
     {
