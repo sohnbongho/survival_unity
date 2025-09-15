@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PORTAL : UIPART
 {
     public Unit_Panel[] panels;
+    private Portal m_Portal;
     [SerializeField] private Image MainIcon;
     [SerializeField] private TextMeshProUGUI MainSpeech;
     [SerializeField] private TextMeshProUGUI MainName;
@@ -21,6 +22,10 @@ public class PORTAL : UIPART
         {
             panels[i].Init(this);
         }
+    }
+    public void Init(Portal portal)
+    {
+        m_Portal = portal;
     }
     public void SetBuildObject()
     {
@@ -40,9 +45,9 @@ public class PORTAL : UIPART
 
         Close();
 
-        // Portal에서 유닛 생성하기
+        m_Portal.GetComponent<Building_OBJ>().SetMakeData(Data.Key, Data.timer);
 
-        
+        // Portal에서 유닛 생성하기
     }
 
     private void MainSetActive(bool isActive)

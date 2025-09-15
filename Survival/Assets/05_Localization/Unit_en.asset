@@ -26,6 +26,10 @@ MonoBehaviour:
     m_Localized: Worker_Speech_Value
     m_Metadata:
       m_Items: []
+  - m_Id: 43293940793344
+    m_Localized: Make
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

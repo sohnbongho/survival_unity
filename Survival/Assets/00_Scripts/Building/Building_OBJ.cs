@@ -114,6 +114,14 @@ public class Building_OBJ : MonoBehaviour
         }
     }
 
+    public void SetMakeData(string key, float timer, Action action = null)
+    {
+        Board.SetActive(true);
+        IconImage.sprite = Asset_Mng.Get_Atlas(key);
+        TitleText.text = Utils.Localization_Text(String_Table.Unit, key);
+        SetBuildData(timer, action);
+    }
+
 
     public void SetBuildData(float time, Action action)
     {
