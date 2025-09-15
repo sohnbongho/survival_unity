@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
-public class P_Movement : MonoBehaviour
+public class P_Movement : Chracter
 {
     public static P_Movement instance;
 
@@ -14,10 +14,7 @@ public class P_Movement : MonoBehaviour
     public LayerMask groundLayer;
     public float rotationSpeed = 10.0f;
 
-    [SerializeField] private GameObject[] Equipments;
-
     private CharacterController controller;
-    private Animator animator;
     private P_Finder Finder;
 
     private void Awake()
@@ -27,34 +24,22 @@ public class P_Movement : MonoBehaviour
             instance = this;
         }
     }
-    public void AnimationChange(string temp)
-    {
-        animator.SetTrigger(temp);
-    }
 
-    public void EquipmentChange(Object_Type type, bool active)
-    {
-        Equipments[(int)type].gameObject.SetActive(active);
-    }
 
     public void EquipmentAllDeactive()
     {
-        for (int i = 0;i< Equipments.Length;i++)
+        for (int i = 0; i < Equipments.Length; i++)
         {
             Equipments[i].SetActive(false);
         }
 
-    }
+    }    
 
-
-    public void Attack()
+    public override void Start()
     {
-    }
+        base.Start();
 
-    public void Start()
-    {
         controller = GetComponent<CharacterController>();
-        animator = GetComponent<Animator>();
         Finder = GetComponent<P_Finder>();
 
         Delegate_Holder.OnInteraction += () =>
@@ -69,11 +54,11 @@ public class P_Movement : MonoBehaviour
     {
         if (Finder.OnInteraction)
         {
-            if (Input.anyKeyDown && false == Input.GetKeyDown(KeyCode.F) 
+            if (Input.anyKeyDown && false == Input.GetKeyDown(KeyCode.F)
                 && !EventSystem.current.IsPointerOverGameObject(0)) // UI 를 클릭했을떄는 동작하지 않음
             {
                 Delegate_Holder.OnOutInteraction();
-            }            
+            }
             return;
         }
         if (Canvas_Holder.Uis.Count > 0)

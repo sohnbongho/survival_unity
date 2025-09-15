@@ -14,16 +14,17 @@ public class Interaction_Hit : M_Object
         HP = m_Data.HP;
     }
 
-    public override void Interaction()
+    public override void Interaction(Chracter chracter)
     {
-        P_Movement.instance.AnimationChange(m_Data.m_Type.ToString());
-        P_Movement.instance.EquipmentChange(m_Data.m_Type, true);
-        base.Interaction();
+        base.Interaction(chracter);
+
+        chracter.AnimationChange(m_Data.m_Type.ToString());
+        chracter.EquipmentChange(m_Data.m_Type, true);
     }
 
-    public override void OnHit()
+    public override void OnHit(Chracter chracter)
     {
-        base.OnHit();
+        base.OnHit(chracter);
         ShakeTree(transform.position - P_Movement.instance.transform.position);
 
         if (HP <= 0)

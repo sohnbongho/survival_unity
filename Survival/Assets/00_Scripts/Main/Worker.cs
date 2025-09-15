@@ -2,50 +2,94 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Worker : MonoBehaviour
+public enum State
+{
+    IDLE,
+    MOVE,
+    Arrived,
+    Interaction
+}
+
+public class Worker : Chracter
 {
     public float checkRaduis;
     public float activationDistance;
     public LayerMask interactableLayer;
     public Transform closetObject;
 
-    Animator animator;
+    public State m_State;
     NavMeshAgent agent;
-    
 
-    private void Start()
+    public override void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        base.Start();
 
-        StartCoroutine(LookAtTarget());
+        agent = GetComponent<NavMeshAgent>();
+        StateChange(State.IDLE);
     }
     private void Update()
     {
-        animator.SetFloat("a_Speed", agent.velocity.magnitude);
-        if(agent.remainingDistance <= 2.0f)
+        if (m_State == State.MOVE)
         {
-            Debug.Log("AI가 목적지에 도착하였습니다.");
+            animator.SetFloat("a_Speed", agent.velocity.magnitude);
+            if (agent.remainingDistance <= 1.0f)
+            {
+                StateChange(State.Arrived);
+            }
         }
 
     }
 
-
-    private void AnimationChange(string temp)
+    public void StateChange(State state)
     {
-        animator.SetTrigger(temp);
+        m_State = state;
+        switch (m_State)
+        {
+            case State.IDLE:
+                animator.SetBool("NoneInteraction", false);
+                StartCoroutine(LookAtTarget());
+                break;
+            case State.MOVE:
+
+                break;
+            case State.Arrived:
+                {
+                    M_Object subObject = null;
+                    if (closetObject.GetComponent<M_Object>() == null)
+                    {
+                        subObject = closetObject.transform.parent.GetComponent<M_Object>();
+                    }
+                    else
+                    {
+                        subObject = closetObject.GetComponent<M_Object>();
+                    }
+
+                    subObject.Interaction(GetComponent<Chracter>());
+
+                    animator.SetBool("NoneInteraction", true);
+                    animator.SetFloat("a_Speed", 0.0f); //             
+                    StateChange(State.Interaction);
+                }
+                break;
+            case State.Interaction:
+                break;
+        }
     }
 
     IEnumerator LookAtTarget()
     {
+        yield return new WaitForSeconds(1.0f);
+
         while (closetObject == null)
         {
             FindClosetTarget();
             yield return null;
         }
+
+        StateChange(State.MOVE);
         agent.SetDestination(closetObject.position);
     }
-    
+
 
     private void FindClosetTarget()
     {

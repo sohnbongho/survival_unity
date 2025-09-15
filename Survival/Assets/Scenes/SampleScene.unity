@@ -4219,6 +4219,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952674973}
   m_CullTransparentMesh: 1
+--- !u!1 &958522017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 77642ffe05a46ac4ea37f2eaee946c77, type: 3}
+  m_PrefabInstance: {fileID: 4272760441778300712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &958760170
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8843,14 +8848,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 112ff1d744c10174b9cc51f750de5a10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::P_Movement
+  Equipments:
+  - {fileID: 1305396960}
+  - {fileID: 747241009}
   moveSpeed: 5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   rotationSpeed: 10
-  Equipments:
-  - {fileID: 1305396960}
-  - {fileID: 747241009}
 --- !u!143 &1932958199
 CharacterController:
   m_ObjectHideFlags: 0
@@ -16536,12 +16541,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549820a31101b1c4099af00c863e71b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Worker
+  Equipments:
+  - {fileID: 958522017}
+  - {fileID: 3483632692298634132}
   checkRaduis: 100
   activationDistance: 100
   interactableLayer:
     serializedVersion: 2
     m_Bits: 128
   closetObject: {fileID: 0}
+  m_State: 0
 --- !u!1 &6586929613296043063
 GameObject:
   m_ObjectHideFlags: 0

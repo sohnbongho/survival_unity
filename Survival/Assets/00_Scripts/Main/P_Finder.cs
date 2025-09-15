@@ -6,7 +6,7 @@ public class P_Finder : MonoBehaviour
     [SerializeField] private float checkRaduis = 5.0f;
     [SerializeField] private LayerMask interactableLayer; // "object"Layer를 유니티에서 등록해야 한다.
     [SerializeField] Canvas uiCanvas;
-    [SerializeField] private GameObject IconPrefab;   
+    [SerializeField] private GameObject IconPrefab;
 
     [SerializeField] private float activationDistance = 3.0f;
 
@@ -63,16 +63,16 @@ public class P_Finder : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 M_Object subObject = null;
-                if(closetObject.GetComponent<M_Object>() == null)
+                if (closetObject.GetComponent<M_Object>() == null)
                 {
                     subObject = closetObject.transform.parent.GetComponent<M_Object>();
                 }
                 else
                 {
-                    subObject = closetObject.GetComponent<M_Object>();                    
+                    subObject = closetObject.GetComponent<M_Object>();
                 }
 
-                subObject.Interaction();
+                subObject.Interaction(GetComponent<Chracter>());
                 //Debug.Log("오브젝트 상호작용!");
 
                 Delegate_Holder.OnStartInteraction();

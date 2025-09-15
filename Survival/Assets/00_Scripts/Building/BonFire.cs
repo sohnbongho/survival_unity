@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class BonFire : M_Object
 {
-    public override void Interaction()
+    public override void Interaction(Chracter chracter)
     {
-        base.Interaction();
-        P_Movement.instance.AnimationChange("Sitting");
+        base.Interaction(chracter);
+        
+        chracter.AnimationChange("Sitting");
         StartCoroutine(BonFireCoroutine());
     }
     public override void OutInteraction()
