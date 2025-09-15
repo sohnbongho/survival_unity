@@ -38,6 +38,8 @@ public class PORTAL : UIPART
         if (CanBuild == false)
             return;
 
+        Close();
+
         // Portal에서 유닛 생성하기
 
         
