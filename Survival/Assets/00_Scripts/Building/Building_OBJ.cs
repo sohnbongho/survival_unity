@@ -146,6 +146,7 @@ public class Building_OBJ : MonoBehaviour
         }
         if (action != null)
         {
+            Board.GetComponent<Animator>().SetTrigger("Out");
             action?.Invoke();
         }
     }

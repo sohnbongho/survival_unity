@@ -753,6 +753,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &8102004299277523797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7700350654835073083}
+  m_Layer: 0
+  m_Name: WayPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7700350654835073083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8102004299277523797}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.73}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1192368316650576551}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8335376065463195959
 GameObject:
   m_ObjectHideFlags: 0
@@ -856,7 +887,7 @@ Transform:
   m_GameObject: {fileID: 8518645170375671220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.60507, y: 7.5, z: 0}
+  m_LocalPosition: {x: -5.43, y: 3.64, z: -0.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -864,6 +895,7 @@ Transform:
   - {fileID: 2583090867321693860}
   - {fileID: 2987278567500543758}
   - {fileID: 5527870854433729094}
+  - {fileID: 7700350654835073083}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1664780533655619929
@@ -888,6 +920,7 @@ MonoBehaviour:
   FillSlilder: {fileID: 2530689216874519867}
   TitleText: {fileID: 7254877184802390781}
   PercentageText: {fileID: 6624118876087971955}
+  Working: 0
 --- !u!54 &5144501355253974118
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -931,6 +964,8 @@ MonoBehaviour:
   GetInteraction: 0
   HP: 0
   Item_Prefab: {fileID: 0}
+  worker: {fileID: 8662005286259787398, guid: 7387b235ef4ce034ca8b2f52aef23975, type: 3}
+  WayPoint: {fileID: 7700350654835073083}
 --- !u!1 &8722812032437311291
 GameObject:
   m_ObjectHideFlags: 0

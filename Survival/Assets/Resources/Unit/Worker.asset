@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Worker
   m_EditorClassIdentifier: Assembly-CSharp::Unit_Scriptable
   Key: Worker
-  timer: 10
+  timer: 3
   itemList:
   - Data: {fileID: 11400000, guid: 256be36d5f3e0ef4f92f9bbeffb5740f, type: 2}
     Count: 1

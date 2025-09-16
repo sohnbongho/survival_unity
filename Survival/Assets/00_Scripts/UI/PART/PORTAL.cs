@@ -29,23 +29,26 @@ public class PORTAL : UIPART
     }
     public void SetBuildObject()
     {
-        bool CanBuild = true;
+        bool canBuild = true;
         for (int i = 0; i < Data.itemList.Count; i++)
         {
             ITEM item = Data.itemList[i];
             if (ItemFlowController.ItemCount(item.Data.Key) < item.Count)
             {
-                CanBuild = false;
+                canBuild = false;
                 break;
             }
         }
 
-        if (CanBuild == false)
+        Portal portal = new Portal();
+        portal = m_Portal;
+
+        if (canBuild == false)
             return;
 
         Close();
-
-        m_Portal.GetComponent<Building_OBJ>().SetMakeData(Data.Key, Data.timer);
+        portal.GetComponent<Building_OBJ>().SetMakeData(Data.Key, Data.timer,
+            () => portal.GetWorker());
 
         // Portal에서 유닛 생성하기
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -20,26 +21,49 @@ public class Worker : Chracter
     public State m_State;
     NavMeshAgent agent;
 
-    public override void Start()
+    private void Awake()
     {
-        base.Start();
-
         agent = GetComponent<NavMeshAgent>();
-        StateChange(State.IDLE);
+        base.Start();
     }
+
+    public void SetDestination(Vector3 pos, Action action)
+    {
+        agent.SetDestination(pos);
+        animator.SetFloat("a_Speed", 1.0f);
+        StartCoroutine(DestinationCoroutine(action));
+    }
+
     private void Update()
     {
         if (m_State == State.MOVE)
         {
-            animator.SetFloat("a_Speed", agent.velocity.magnitude);
-            if (agent.remainingDistance <= 1.5f)
+            if (closetObject == null)
             {
-                StateChange(State.Arrived);
+                StateChange(State.IDLE);
             }
+        }
+        else if (m_State == State.Interaction)
+        {
+            if (closetObject == null)
+            {
+                StateChange(State.IDLE);
+            }
+        }
+    }
 
+    IEnumerator DestinationCoroutine(Action action)
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        while (agent.remainingDistance > agent.stoppingDistance)
+        {
+            yield return null;
         }
 
+        action?.Invoke();
     }
+
 
     public void StateChange(State state)
     {
@@ -47,7 +71,10 @@ public class Worker : Chracter
         switch (m_State)
         {
             case State.IDLE:
+                StopAllCoroutines();
+                agent.stoppingDistance = 3.0f;
                 EquipmentAllDeactive();
+                animator.SetFloat("a_Speed", 0.0f);
                 animator.SetBool("NoneInteraction", false);
                 StartCoroutine(LookAtTarget());
                 break;
@@ -56,6 +83,11 @@ public class Worker : Chracter
             case State.Arrived:
                 {
                     M_Object subObject = null;
+                    if (closetObject == null)
+                    {
+                        StateChange(State.IDLE);
+                    }
+
                     if (closetObject.GetComponent<M_Object>() == null)
                     {
                         subObject = closetObject.transform.parent.GetComponent<M_Object>();
@@ -87,14 +119,14 @@ public class Worker : Chracter
             FindClosetTarget();
             yield return new WaitForSeconds(0.5f);
         }
-        var targetPosition = new Vector3(closetObject.position.x,
-            transform.position.y,
-            closetObject.position.z);
 
-        agent.SetDestination(targetPosition);
+        //var targetPosition = new Vector3(closetObject.position.x,
+        //    transform.position.y,
+        //    closetObject.position.z);
+        var targetPosition = closetObject.position;
+        SetDestination(targetPosition, () => StateChange(State.Arrived));
 
         yield return new WaitForSeconds(0.02f);
-
         StateChange(State.MOVE);
     }
 
