@@ -25,6 +25,7 @@ public class Worker : Chracter
     {
         agent = GetComponent<NavMeshAgent>();
         base.Start();
+        CompassBar.AddMarker(transform, "Worker");
     }
 
     public void SetDestination(Vector3 pos, Action action)

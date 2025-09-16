@@ -1,5 +1,28 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
+public class MarkerInfo
+{
+    public Transform TargetTransform;
+    public RectTransform MarkerUI;
+    public string Key;
+    public Image MarkerIcon;
+    public TextMeshProUGUI MarkerText;
+
+    public MarkerInfo(Transform targetTransform, RectTransform markerUI, string key)
+    {
+        TargetTransform = targetTransform;
+        MarkerUI = markerUI;
+        Key = key;
+
+        MarkerIcon = markerUI.Find("Icon").GetComponent<Image>();
+        MarkerText = markerUI.Find("MText").GetComponent<TextMeshProUGUI>();
+
+        MarkerIcon.sprite = Asset_Mng.Get_Atlas(Key);
+    }
+}
 
 public class CompassBar : MonoBehaviour
 {
@@ -14,14 +37,23 @@ public class CompassBar : MonoBehaviour
     public float MaxScale;
     public float MinScale;
 
+    [Header("## Other Transform")]
+    public static GameObject MarkerPrefab;
+    public static Transform MarkerParent;
+    public static List<MarkerInfo> ActiveMarkers = new List<MarkerInfo>();
+
     private void Start()
     {
         PlayerTransform = P_Movement.instance.transform;
+        MarkerPrefab = transform.Find("CompassMarker").gameObject;
+        MarkerPrefab.SetActive(false);
+        MarkerParent = transform.Find("Mask").transform;
     }
 
     private void Update()
     {
         UpdateCompass();
+        UpdateMarkers();
     }
     private void UpdateCompass()
     {
@@ -52,6 +84,45 @@ public class CompassBar : MonoBehaviour
         text.color = color;
 
         text.rectTransform.localScale = Vector3.one * scale;
+    }
+
+    public static void AddMarker(Transform targetTransform, string key)
+    {
+        if (ActiveMarkers.Exists(m => m.TargetTransform == targetTransform))
+            return;
+
+        GameObject marker = Instantiate(MarkerPrefab, MarkerParent);
+        marker.SetActive(true);
+        marker.name = "Marker:" + targetTransform.name;
+        RectTransform markerRect = marker.GetComponent<RectTransform>();
+        ActiveMarkers.Add(new MarkerInfo(targetTransform, markerRect, key));
+    }
+
+    public void UpdateMarkers()
+    {
+        for (int i = ActiveMarkers.Count - 1; i >= 0; i--)
+        {
+            MarkerInfo markerInfo = ActiveMarkers[i];
+            if (markerInfo.TargetTransform == null)
+            {
+                Destroy(markerInfo.MarkerUI.gameObject);
+                ActiveMarkers.RemoveAt(i);
+                continue;
+            }
+            float heading = PlayerTransform.eulerAngles.y;
+            Vector3 directionToTarget = markerInfo.TargetTransform.position - PlayerTransform.position;
+            float distance = Vector3.Distance(markerInfo.TargetTransform.position, PlayerTransform.position);
+
+            float targetAngle = Mathf.Atan2(-directionToTarget.x, directionToTarget.z) * Mathf.Rad2Deg; // 각도 생성
+
+            float relativeAngle = (heading - targetAngle + 360.0f) % 360.0f;
+            float normalizedAngle = relativeAngle / 360.0f; // 
+
+            float xPosition = Mathf.Lerp(-CompassWidth, CompassWidth, normalizedAngle);
+            markerInfo.MarkerUI.anchoredPosition = new Vector2(xPosition, markerInfo.MarkerUI.anchoredPosition.y);
+            markerInfo.MarkerText.text = string.Format("{0:0.0} m", distance);
+
+        }
 
     }
 }
