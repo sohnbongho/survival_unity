@@ -89,6 +89,7 @@
     <Compile Include="Assets\00_Scripts\Manager\Object_Mng.cs" />
     <Compile Include="Assets\00_Scripts\Building\BonFire.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\PORTAL.cs" />
+    <Compile Include="Assets\00_Scripts\UI\CompassBar.cs" />
     <Compile Include="Assets\00_Scripts\UI\UI_Animation_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Scriptable\Building_Scriptable.cs" />
     <Compile Include="Assets\00_Scripts\Main\Cam_Movement.cs" />
