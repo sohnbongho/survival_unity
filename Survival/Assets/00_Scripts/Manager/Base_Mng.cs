@@ -7,12 +7,16 @@ public class Base_Mng : MonoBehaviour
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
 
-        Build = GetComponentInChildren<Building_Mng>();
-        Game = GetComponentInChildren<Game_Mng>();
+            Build = GetComponentInChildren<Building_Mng>();
+            Game = GetComponentInChildren<Game_Mng>();
+            Object = GetComponentInChildren<Object_Mng>();
+        }
     }
 
-    [HideInInspector] public Building_Mng Build;
-    [HideInInspector] public Game_Mng Game;
+    public static Building_Mng Build;
+    public static Game_Mng Game;
+    public static Object_Mng Object;
 }

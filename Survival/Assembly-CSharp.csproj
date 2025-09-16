@@ -86,6 +86,7 @@
     <Compile Include="Assets\00_Scripts\UI\PART\INVENTORY.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Asset_Mng.cs" />
     <Compile Include="Assets\00_Scripts\UI\Nav_Item.cs" />
+    <Compile Include="Assets\00_Scripts\Manager\Object_Mng.cs" />
     <Compile Include="Assets\00_Scripts\Building\BonFire.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\PORTAL.cs" />
     <Compile Include="Assets\00_Scripts\UI\UI_Animation_Handler.cs" />

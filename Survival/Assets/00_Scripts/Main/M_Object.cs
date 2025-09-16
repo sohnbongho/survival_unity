@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class M_Object : MonoBehaviour
 {
-    public Object_Scriptable m_Data;
+    [HideInInspector] public Object_Scriptable m_Data;
     public bool GetInteraction = false;
     public int HP;
     public Item Item_Prefab;
@@ -31,7 +31,7 @@ public class M_Object : MonoBehaviour
         if (chracter.MainPlayer)
         {
             Canvas_Holder.instance.GetBoard();
-            Base_Mng.instance.Game.SetStamina(-10);
+            Base_Mng.Game.SetStamina(-10);
         }
 
         HP_Init(chracter);
@@ -55,8 +55,8 @@ public class M_Object : MonoBehaviour
             {
                 chracter.GetComponent<Worker>().StateChange(State.IDLE);
             }
-
-            // 파괴 되기전에 위치를 보낸다.
+            
+            Base_Mng.Object.RemoveObject(this.gameObject);
             Destroy(this.gameObject);
             return;
         }

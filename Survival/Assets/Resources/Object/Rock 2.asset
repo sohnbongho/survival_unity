@@ -10,15 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971449c0014c2024eb8fe755a80ee155, type: 3}
-  m_Name: Tree
-  m_EditorClassIdentifier: Assembly-CSharp::NewScriptableObjectScript
-  m_Type: 0
-  Name: "\uB098\uBB34"
+  m_Name: Rock 2
+  m_EditorClassIdentifier: Assembly-CSharp::Object_Scriptable
+  m_Type: 1
+  Name: "\uBC14\uC704"
   HP: 100
+  obj: {fileID: 8566898065706650618, guid: fe4b065bdd393f548b9a7bb724860be4, type: 3}
   Drop_Items:
-  - Item_Data: {fileID: 11400000, guid: 97fe3793b07562d4a8ac5e5c3666e5a8, type: 2}
+  - Item_Data: {fileID: 11400000, guid: 256be36d5f3e0ef4f92f9bbeffb5740f, type: 2}
     Value: 100
     Maximum: 50
-  - Item_Data: {fileID: 11400000, guid: d4ad6e91e3f77014abce373b364c8b47, type: 2}
+  - Item_Data: {fileID: 11400000, guid: 8ee38c68a02148d49b34d40a22fea211, type: 2}
     Value: 100
     Maximum: 50

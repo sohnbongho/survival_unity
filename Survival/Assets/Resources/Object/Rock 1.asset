@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 971449c0014c2024eb8fe755a80ee155, type: 3}
-  m_Name: Rock
+  m_Name: Rock 1
   m_EditorClassIdentifier: Assembly-CSharp::Object_Scriptable
   m_Type: 1
   Name: "\uBC14\uC704"
   HP: 100
-  obj: {fileID: 2838766407278978059, guid: d1b5f97ef8096b34cbf33024024cf365, type: 3}
+  obj: {fileID: 4876896681976161017, guid: 540fe77a30c498c49b9f8a79877576ec, type: 3}
   Drop_Items:
   - Item_Data: {fileID: 11400000, guid: 256be36d5f3e0ef4f92f9bbeffb5740f, type: 2}
     Value: 100

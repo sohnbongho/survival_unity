@@ -25,9 +25,6 @@ public class P_Movement : Chracter
         }
     }
 
-
-
-
     public override void Start()
     {
         base.Start();

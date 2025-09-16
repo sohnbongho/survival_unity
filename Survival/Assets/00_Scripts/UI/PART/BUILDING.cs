@@ -51,7 +51,7 @@ public class BUILDING : UIPART
             return;
 
         Close();
-        Base_Mng.instance.Build.SetBuild(BuildingObj);
+        Base_Mng.Build.SetBuild(BuildingObj);
     }
 
     // GetComponentInChildren 자식 오브젝트의 특정 컴포넌트를 추적
