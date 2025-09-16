@@ -72,6 +72,7 @@ public class Canvas_Holder : MonoBehaviour
     {
         if (uiParts.ContainsKey(uiName))
         {
+            P_Movement.instance.ReturnCharacterMove();
             uiParts[uiName].Close();
         }
         else
