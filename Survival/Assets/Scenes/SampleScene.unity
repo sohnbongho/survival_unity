@@ -4246,6 +4246,7 @@ MonoBehaviour:
   MinAlpha: 0.2
   MaxScale: 1.2
   MinScale: 0.8
+  MaxDistance: 10
 --- !u!1 &935777945
 GameObject:
   m_ObjectHideFlags: 0

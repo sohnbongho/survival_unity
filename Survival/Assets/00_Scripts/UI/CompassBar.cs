@@ -36,6 +36,7 @@ public class CompassBar : MonoBehaviour
     public float MinAlpha;
     public float MaxScale;
     public float MinScale;
+    public float MaxDistance;
 
     [Header("## Other Transform")]
     public static GameObject MarkerPrefab;
@@ -116,6 +117,9 @@ public class CompassBar : MonoBehaviour
 
             float relativeAngle = (heading - targetAngle + 360.0f) % 360.0f;
             float normalizedAngle = relativeAngle / 360.0f; // 
+
+            bool markerActive = distance <= MaxDistance ? false : true;
+            markerInfo.MarkerUI.gameObject.SetActive(markerActive);
 
             float xPosition = Mathf.Lerp(-CompassWidth, CompassWidth, normalizedAngle);
             markerInfo.MarkerUI.anchoredPosition = new Vector2(xPosition, markerInfo.MarkerUI.anchoredPosition.y);
