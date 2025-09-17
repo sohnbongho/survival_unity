@@ -71,6 +71,9 @@ public class Building_OBJ : MonoBehaviour
         Board.GetComponent<Animator>().SetTrigger("Out");
 
         CompassBar.AddMarker(transform, m_Data.Key);
+
+        GetComponent<AudioSource>().enabled = true; // 건설이 완료가 되면 사운드 On
+
         StartCoroutine(CompletedCoroutine());
         PortalQuad.SetActive(true); // 포탈 이펙트 on                
     }

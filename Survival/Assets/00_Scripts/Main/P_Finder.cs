@@ -12,6 +12,7 @@ public class P_Finder : MonoBehaviour
 
     private Dictionary<Transform, GameObject> activeIcons = new Dictionary<Transform, GameObject>();
     [HideInInspector] public bool OnInteraction = false;
+
     private Transform closetObject = null;
 
     private void Start()
@@ -60,6 +61,7 @@ public class P_Finder : MonoBehaviour
         if (closetObject != null)
         {
             ShowIcon(closetObject);
+
             if (Input.GetKeyDown(KeyCode.F))
             {
                 M_Object subObject = null;
@@ -87,7 +89,7 @@ public class P_Finder : MonoBehaviour
         List<Transform> toRemove = new List<Transform>();
         foreach (var iconEntry in activeIcons)
         {
-            if (iconEntry.Key != closetObject)
+            if (iconEntry.Key != closetObject || closetObject == null)
             {
                 iconEntry.Value.GetComponent<UI_Animation_Handler>().AnimationChange("Out");
                 toRemove.Add(iconEntry.Key);

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class UI_Animation_Handler : MonoBehaviour
 {
-    Animator animator;    
-    void Start()
+    Animator animator;
+    void Awake()
     {
         animator = GetComponent<Animator>();
     }
