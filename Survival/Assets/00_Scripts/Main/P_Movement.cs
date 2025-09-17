@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(CharacterController))]
-public class P_Movement : Chracter
+public class P_Movement : Character
 {
     public static P_Movement instance;
 

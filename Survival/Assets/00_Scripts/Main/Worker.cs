@@ -11,7 +11,7 @@ public enum State
     Interaction
 }
 
-public class Worker : Chracter
+public class Worker : Character
 {
     public float checkRaduis;
     public float activationDistance;
@@ -98,7 +98,7 @@ public class Worker : Chracter
                         subObject = closetObject.GetComponent<M_Object>();
                     }
 
-                    subObject.Interaction(GetComponent<Chracter>());
+                    subObject.Interaction(GetComponent<Character>());
 
                     animator.SetBool("NoneInteraction", true);
                     animator.SetFloat("a_Speed", 0.0f); //

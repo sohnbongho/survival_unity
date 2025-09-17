@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Chracter : MonoBehaviour
+public class Character : MonoBehaviour
 {
     public bool MainPlayer = false;
 

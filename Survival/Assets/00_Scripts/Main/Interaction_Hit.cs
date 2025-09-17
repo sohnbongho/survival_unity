@@ -14,7 +14,7 @@ public class Interaction_Hit : M_Object
         HP = m_Data.HP;
     }
 
-    public override void Interaction(Chracter chracter)
+    public override void Interaction(Character chracter)
     {
         base.Interaction(chracter);
 
@@ -22,7 +22,7 @@ public class Interaction_Hit : M_Object
         chracter.EquipmentChange(m_Data.m_Type, true);
     }
 
-    public override void OnHit(Chracter chracter)
+    public override void OnHit(Character chracter)
     {
         base.OnHit(chracter);
         ShakeTree(transform.position - P_Movement.instance.transform.position);

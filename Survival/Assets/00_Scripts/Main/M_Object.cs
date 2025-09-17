@@ -21,12 +21,12 @@ public class M_Object : MonoBehaviour
 
     }
 
-    public virtual void Interaction(Chracter chracter)
+    public virtual void Interaction(Character chracter)
     {
         chracter.m_Object = this;
         GetInteraction = true;
     }
-    public virtual void OnHit(Chracter chracter)
+    public virtual void OnHit(Character chracter)
     {
         if (chracter.MainPlayer)
         {
@@ -38,7 +38,7 @@ public class M_Object : MonoBehaviour
         HP_Init(chracter);
     }
 
-    public virtual void HP_Init(Chracter chracter)
+    public virtual void HP_Init(Character chracter)
     {
         bool mainPlayer = chracter.MainPlayer;
         if (HP <= 0)

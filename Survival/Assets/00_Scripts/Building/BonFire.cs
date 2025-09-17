@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BonFire : M_Object
 {
-    public override void Interaction(Chracter chracter)
+    public override void Interaction(Character chracter)
     {
         base.Interaction(chracter);
         

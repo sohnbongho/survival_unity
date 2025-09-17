@@ -6,7 +6,7 @@ public class Portal : M_Object
     [SerializeField] private Worker worker;
     [SerializeField] private Transform WayPoint;
 
-    public override void Interaction(Chracter chracter)
+    public override void Interaction(Character chracter)
     {
         base.Interaction(chracter);
 

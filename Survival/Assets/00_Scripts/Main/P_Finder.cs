@@ -74,7 +74,7 @@ public class P_Finder : MonoBehaviour
                     subObject = closetObject.GetComponent<M_Object>();
                 }
 
-                subObject.Interaction(GetComponent<Chracter>());
+                subObject.Interaction(GetComponent<Character>());
                 //Debug.Log("오브젝트 상호작용!");
 
                 Delegate_Holder.OnStartInteraction();
