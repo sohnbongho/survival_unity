@@ -109,10 +109,8 @@ public class Canvas_Holder : MonoBehaviour
         CheckUI(KeyCode.I, "INVENTORY");
         CheckUI(KeyCode.B, "BUILDING");
     }
-    public void GetText(string temp, Color color)
+    public void GetText(string temp, Color color, Vector3 posReal)
     {
-        Vector3 posReal = P_Movement.instance.transform.position;
-
         posReal.y += 3.0f;
         posReal.x += Random.Range(-0.5f, 0.5f);
         posReal.z += Random.Range(-0.5f, 0.5f);

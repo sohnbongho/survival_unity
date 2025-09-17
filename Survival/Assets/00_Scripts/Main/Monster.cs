@@ -20,15 +20,16 @@ public class Monster : MonoBehaviour
     }
     public void GetDamage(int dmg)
     {
-        var playerPos = P_Movement.instance.transform.position;        
+        var playerPos = P_Movement.instance.transform.position;
         var distance = Vector3.Distance(transform.position, playerPos);
         if (distance <= Range)
         {
             Board.SetActive(true);
-            Debug.Log($"데미지를 입었습니다.{distance}");
+            Canvas_Holder.instance.GetText(dmg.ToString(), Color.yellow, transform.position);
             HP -= dmg;
+            P_Movement.instance.GetComponent<Character>().GetHitParticle();
 
-            if(Coroutine != null)
+            if (Coroutine != null)
             {
                 StopCoroutine(Coroutine);
             }
@@ -40,9 +41,9 @@ public class Monster : MonoBehaviour
     {
         float value = (float)HP / (float)MaxHP;
         Silider02Fill.fillAmount = value;
-        
+
         float timer = 0.0f;
-        while(timer < 1.0f)
+        while (timer < 1.0f)
         {
             timer += Time.deltaTime;
             Silider01Fill.fillAmount = Mathf.Lerp(Silider01Fill.fillAmount, Silider02Fill.fillAmount, timer);

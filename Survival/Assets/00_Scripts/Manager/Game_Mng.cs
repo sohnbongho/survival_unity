@@ -22,8 +22,8 @@ public class Game_Mng : MonoBehaviour
         Stamina += value;
         if (getText)
         {
-            Color color = value > 0 ? Color.green : Color.red;
-            Canvas_Holder.instance.GetText(value.ToString(), color);
+            Color color = value > 0 ? Color.green : Color.red;            
+            Canvas_Holder.instance.GetText(value.ToString(), color, P_Movement.instance.transform.position);
         }
         Delegate_Holder.OnStaminaChange(Stamina);
     }

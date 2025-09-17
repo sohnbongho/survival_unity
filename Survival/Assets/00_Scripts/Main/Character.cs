@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     protected Animator animator;
     public M_Object m_Object = null;
     [SerializeField] protected GameObject HitParticle;
+    [SerializeField] private Transform GetParticleTransform;
 
     public virtual void Start()
     {
@@ -21,15 +22,19 @@ public class Character : MonoBehaviour
         if (m_Object == null)
             return;
 
-        m_Object.HP -= 20;
+        m_Object.HP -= 20;                
+        GetHitParticle();
 
-        Vector3 pos = new Vector3(
-            m_Object.transform.position.x + Random.Range(-0.5f, 0.5f),
-            m_Object.transform.position.y + 1.5f,
-            m_Object.transform.position.z + Random.Range(-0.5f, 0.5f));
-
-        Instantiate(HitParticle, pos, Quaternion.identity);
         m_Object.OnHit(this);
+    }
+    public void GetHitParticle()
+    {
+        var realPos = GetParticleTransform.position;
+        Vector3 pos = new Vector3(
+            realPos.x + Random.Range(-0.5f, 0.5f),
+            realPos.y + 1.5f,
+            realPos.z + Random.Range(-0.5f, 0.5f));
+        Instantiate(HitParticle, pos, Quaternion.identity);
     }
     public virtual void Attack()
     {
