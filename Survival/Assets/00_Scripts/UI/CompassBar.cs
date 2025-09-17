@@ -112,8 +112,7 @@ public class CompassBar : MonoBehaviour
             float heading = PlayerTransform.eulerAngles.y;
             Vector3 directionToTarget = markerInfo.TargetTransform.position - PlayerTransform.position;
             float distance = Vector3.Distance(markerInfo.TargetTransform.position, PlayerTransform.position);
-
-            float targetAngle = Mathf.Atan2(-directionToTarget.x, directionToTarget.z) * Mathf.Rad2Deg; // 阿档 积己
+            float targetAngle = Mathf.Atan2(-directionToTarget.x, -directionToTarget.z) * Mathf.Rad2Deg; // 阿档 积己
 
             float relativeAngle = (heading - targetAngle + 360.0f) % 360.0f;
             float normalizedAngle = relativeAngle / 360.0f; // 
