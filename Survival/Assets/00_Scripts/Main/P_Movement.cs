@@ -60,6 +60,10 @@ public class P_Movement : Character
         }
 
         Move();
+
+        if (Finder.GetMonster)
+            return;
+
         RotateTowardsMouse();
     }
     void Move()

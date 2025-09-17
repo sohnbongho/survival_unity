@@ -11,10 +11,12 @@ public class P_Finder : MonoBehaviour
     [SerializeField] private GameObject IconPrefab;
 
     [SerializeField] private float activationDistance = 3.0f;
+    [SerializeField] private float AttackSpeed;
 
     private Dictionary<Transform, GameObject> activeIcons = new Dictionary<Transform, GameObject>();
     [HideInInspector] public bool OnInteraction = false;
-    private bool GetMonster = false;
+    public bool GetMonster = false;
+    private bool IsAttack = false;
 
     private Transform closetObject = null;
 
@@ -53,11 +55,15 @@ public class P_Finder : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                AttackMonster(monsterObjects[0].transform);
+                if (IsAttack == false)
+                {
+                    AttackMonster(monsterObjects[0].transform);
+                    
+                }
             }
+            transform.LookAt(monsterObjects[0].transform);
             return;
         }
-
 
         //////////// 근처 오브젝트 체크
         Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, checkRaduis, interactableLayer);
@@ -103,9 +109,13 @@ public class P_Finder : MonoBehaviour
 
     private void AttackMonster(Transform target)
     {
+        IsAttack = true;        
         P_Movement.instance.AnimationChange("Attack");
         P_Movement.instance.EquipmentChange(Object_Type.Monster, true);
+        Invoke("ReturnAttack", AttackSpeed);
     }
+
+    private void ReturnAttack() => IsAttack = false;
 
     private void IconInit()
     {
