@@ -41,6 +41,9 @@ public class Character : MonoBehaviour
 
     public void GetHitParticle()
     {
+        if (GetParticleTransform == null)
+            return;
+
         var realPos = GetParticleTransform.position;
         Vector3 pos = new Vector3(
             realPos.x + Random.Range(-0.5f, 0.5f),
