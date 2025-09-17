@@ -57,13 +57,16 @@ public class P_Finder : MonoBehaviour
             {
                 if (IsAttack == false)
                 {
-                    AttackMonster(monsterObjects[0].transform);
-                    
+                    AttackMonster(monsterObjects);
+                    P_Movement.instance.EquipmentChange(Object_Type.Monster, true);
                 }
             }
+
             transform.LookAt(monsterObjects[0].transform);
             return;
         }
+
+        P_Movement.instance.EquipmentChange(Object_Type.Monster, false);
 
         //////////// 근처 오브젝트 체크
         Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, checkRaduis, interactableLayer);
@@ -107,11 +110,15 @@ public class P_Finder : MonoBehaviour
         IconInit();
     }
 
-    private void AttackMonster(Transform target)
+    private void AttackMonster(Collider[] mosnters)
     {
-        IsAttack = true;        
+        IsAttack = true;
         P_Movement.instance.AnimationChange("Attack");
-        P_Movement.instance.EquipmentChange(Object_Type.Monster, true);
+        for (int i = 0; i < mosnters.Length; i++)
+        {
+            mosnters[i].GetComponent<Monster>().GetDamage(10);
+        }
+        
         Invoke("ReturnAttack", AttackSpeed);
     }
 

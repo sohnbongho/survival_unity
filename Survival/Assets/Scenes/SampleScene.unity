@@ -2701,6 +2701,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50d8463ce119c9c45b71d996ceb1d36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monster
+  HP: 110
+  MaxHP: 110
+  Range: 3
+  Board: {fileID: 186693284}
+  Silider01Fill: {fileID: 763386376}
+  Silider02Fill: {fileID: 1665334777}
 --- !u!136 &498373624
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3486,6 +3492,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7398547592085075868}
   m_LocalEulerAnglesHint: {x: -66.08642, y: 64.30068, z: 22.879827}
+--- !u!114 &763386376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7963690934070249794, guid: 530530abf59dc49488d925e5e393b073, type: 3}
+  m_PrefabInstance: {fileID: 1621550193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &800639365
 GameObject:
   m_ObjectHideFlags: 0
@@ -9293,6 +9310,17 @@ MonoBehaviour:
   WeightFill: {fileID: 1079478781}
   WeightText: {fileID: 60036341}
   ItemClickTap: {fileID: 868616426}
+--- !u!114 &1665334777 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2307577761036645720, guid: 530530abf59dc49488d925e5e393b073, type: 3}
+  m_PrefabInstance: {fileID: 1621550193}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1681052686
 GameObject:
   m_ObjectHideFlags: 0
@@ -10490,7 +10518,9 @@ MonoBehaviour:
   uiCanvas: {fileID: 2061552550}
   IconPrefab: {fileID: 8037100611054073882, guid: 79ea16cd9fdea3a47a5b85b722fa2285, type: 3}
   activationDistance: 5
+  AttackSpeed: 1
   OnInteraction: 0
+  GetMonster: 0
 --- !u!114 &1932958198
 MonoBehaviour:
   m_ObjectHideFlags: 0
