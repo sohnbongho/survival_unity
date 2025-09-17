@@ -5,6 +5,8 @@ public class P_Finder : MonoBehaviour
 {
     [SerializeField] private float checkRaduis = 5.0f;
     [SerializeField] private LayerMask interactableLayer; // "object"Layer를 유니티에서 등록해야 한다.
+    [SerializeField] private LayerMask MonsterLayer; // 
+
     [SerializeField] Canvas uiCanvas;
     [SerializeField] private GameObject IconPrefab;
 
@@ -12,6 +14,7 @@ public class P_Finder : MonoBehaviour
 
     private Dictionary<Transform, GameObject> activeIcons = new Dictionary<Transform, GameObject>();
     [HideInInspector] public bool OnInteraction = false;
+    private bool GetMonster = false;
 
     private Transform closetObject = null;
 
@@ -43,6 +46,20 @@ public class P_Finder : MonoBehaviour
             return;
         }
 
+        //////////// 근처 몬스터 체크
+        Collider[] monsterObjects = Physics.OverlapSphere(transform.position, checkRaduis, MonsterLayer);
+        GetMonster = monsterObjects.Length > 0;
+        if (GetMonster)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                AttackMonster(monsterObjects[0].transform);
+            }
+            return;
+        }
+
+
+        //////////// 근처 오브젝트 체크
         Collider[] nearbyObjects = Physics.OverlapSphere(transform.position, checkRaduis, interactableLayer);
         closetObject = null;
 
@@ -82,6 +99,12 @@ public class P_Finder : MonoBehaviour
         }
 
         IconInit();
+    }
+
+    private void AttackMonster(Transform target)
+    {
+        P_Movement.instance.AnimationChange("Attack");
+        P_Movement.instance.EquipmentChange(Object_Type.Monster, true);
     }
 
     private void IconInit()
