@@ -948,6 +948,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 163775385}
   m_CullTransparentMesh: 1
+--- !u!1 &186693284 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3216090866392140415, guid: 530530abf59dc49488d925e5e393b073, type: 3}
+  m_PrefabInstance: {fileID: 1621550193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &186693288
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186693284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8def3b9bb1aa7948bacebfd41174086, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &212831756
 GameObject:
   m_ObjectHideFlags: 0
@@ -8827,6 +8854,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 170616561513348764, guid: 530530abf59dc49488d925e5e393b073, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 861b0439555e61749aab05828dd28d7e, type: 2}
     - target: {fileID: 6362118682115421055, guid: 530530abf59dc49488d925e5e393b073, type: 3}
       propertyPath: m_Name
       value: Monster
@@ -8878,7 +8909,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3216090866392140415, guid: 530530abf59dc49488d925e5e393b073, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 186693288}
   m_SourcePrefab: {fileID: 100100000, guid: 530530abf59dc49488d925e5e393b073, type: 3}
 --- !u!1 &1621980302
 GameObject:
@@ -10240,18 +10274,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &1932958196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132147866641568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 411edca8dea411141a26da64387733b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::P_Handler
 --- !u!114 &1932958197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10285,6 +10307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::P_Movement
   MainPlayer: 1
+  HP: 0
+  MaxHP: 0
   Equipments:
   - {fileID: 1305396960}
   - {fileID: 747241009}
@@ -16532,7 +16556,6 @@ GameObject:
   - component: {fileID: 1932958199}
   - component: {fileID: 1932958198}
   - component: {fileID: 1932958197}
-  - component: {fileID: 1932958196}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged

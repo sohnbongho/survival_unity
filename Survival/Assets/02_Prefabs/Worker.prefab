@@ -315,6 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Worker
   MainPlayer: 0
+  HP: 0
+  MaxHP: 0
   Equipments:
   - {fileID: 5834839789030947168}
   - {fileID: 8056858146649618975}
