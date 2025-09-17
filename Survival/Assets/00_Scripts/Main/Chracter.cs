@@ -3,6 +3,10 @@ using UnityEngine;
 public class Chracter : MonoBehaviour
 {
     public bool MainPlayer = false;
+
+    public int HP;
+    public int MaxHP;
+
     [SerializeField] protected GameObject[] Equipments;
     protected Animator animator;
     public M_Object m_Object = null;
