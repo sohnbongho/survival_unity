@@ -114,11 +114,7 @@ public class P_Finder : MonoBehaviour
     {
         IsAttack = true;
         P_Movement.instance.AnimationChange("Attack");
-        for (int i = 0; i < mosnters.Length; i++)
-        {
-            mosnters[i].GetComponent<Monster>().GetDamage(10);
-        }
-        
+        P_Movement.instance.Colliders = mosnters;
         Invoke("ReturnAttack", AttackSpeed);
     }
 

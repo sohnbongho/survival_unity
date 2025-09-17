@@ -13,10 +13,13 @@ public class Monster : MonoBehaviour
     [SerializeField] private Image Silider01Fill, Silider02Fill;
 
     Coroutine Coroutine;
+    Coroutine Hit_Coroutine;
+    Renderer Renderer;
 
     public void Start()
     {
         HP = MaxHP;
+        Renderer = transform.GetComponentInChildren<Renderer>();
     }
     public void GetDamage(int dmg)
     {
@@ -34,6 +37,45 @@ public class Monster : MonoBehaviour
                 StopCoroutine(Coroutine);
             }
             Coroutine = StartCoroutine(SliderCoroutine(HP));
+
+            if (Hit_Coroutine != null)
+            {
+                StopCoroutine(Hit_Coroutine);
+            }
+            Hit_Coroutine = StartCoroutine(GetHitCoroutine());
+        }
+    }
+
+
+    IEnumerator GetHitCoroutine()
+    {
+        float current = 0.0f;
+        float percent = 0.0f;
+        const float endPercent = 0.2f;
+
+        Color startColor = Color.black;
+        Color endColor = Color.white;
+
+        while (percent < 1.0f)
+        {
+            current += Time.deltaTime;
+            percent = current / endPercent;
+
+            Color lerpColor = Color.Lerp(startColor, endColor, percent);
+            Renderer.material.SetColor("_EmissionColor", lerpColor);
+            yield return null;
+        }
+
+        current = 0.0f;
+        percent = 0.0f;
+        while (percent < 1.0f)
+        {
+            current += Time.deltaTime;
+            percent = current / endPercent;
+
+            Color lerpColor = Color.Lerp(endColor, startColor, percent);
+            Renderer.material.SetColor("_EmissionColor", lerpColor);
+            yield return null;
         }
     }
 
