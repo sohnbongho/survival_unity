@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Object_Mng : MonoBehaviour
 {
     private CullingGroup CullingGroup;
     private BoundingSphere[] BoundingSpheres;
+    public GameObject MonsterSpawner;
     private List<GameObject> SetObjects = new List<GameObject>();
 
     public float CullingGroupRadius = 10.0f;
@@ -101,6 +103,23 @@ public class Object_Mng : MonoBehaviour
             yield return null;
         }
 
+        //////////// 몬스터 스포너
+        for (int i = 0; i < 10; i++)
+        {
+            MakePos(out var pos);
+            while (Vector3.Distance(pos, Vector3.zero) <= CenterLimitValue)
+            {
+                MakePos(out pos);
+            }
+            
+            Vector3 targetPos = new Vector3(pos.x, MonsterSpawner.transform.position.y, pos.z);
+            var go = Instantiate(MonsterSpawner, targetPos, Quaternion.identity);
+
+            yield return null;
+        }
+
+
+        ///////// 만든 오브젝트 Culling
         MakeCulling();
     }
 
