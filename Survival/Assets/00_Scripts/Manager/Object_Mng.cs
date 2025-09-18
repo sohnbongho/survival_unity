@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Object_Mng : MonoBehaviour
@@ -114,7 +113,7 @@ public class Object_Mng : MonoBehaviour
             {
                 MakePos(out pos);
             }
-            
+
             Vector3 targetPos = new Vector3(pos.x, MonsterSpawner.transform.position.y, pos.z);
             var go = Instantiate(MonsterSpawner, targetPos, Quaternion.identity);
 
@@ -128,9 +127,9 @@ public class Object_Mng : MonoBehaviour
 
     private bool IsPositionOverlapping(Vector3 position, float checkRadius)
     {
-        foreach(var obj in SetObjects) 
-        { 
-            if(Vector3.Distance(obj.transform.position, position) < checkRadius)
+        foreach (var obj in SetObjects)
+        {
+            if (Vector3.Distance(obj.transform.position, position) < checkRadius)
             {
                 return true;
             }
