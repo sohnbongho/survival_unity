@@ -93,6 +93,7 @@
     <Compile Include="Assets\00_Scripts\UI\CompassBar.cs" />
     <Compile Include="Assets\00_Scripts\UI\UI_Animation_Handler.cs" />
     <Compile Include="Assets\00_Scripts\Scriptable\Building_Scriptable.cs" />
+    <Compile Include="Assets\00_Scripts\UI\Directional_Monster_Slider.cs" />
     <Compile Include="Assets\00_Scripts\Main\Cam_Movement.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Delegate_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Building\Portal.cs" />

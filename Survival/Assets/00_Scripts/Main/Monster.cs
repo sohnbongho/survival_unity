@@ -9,20 +9,14 @@ public class Monster : MonoBehaviour
     public int MaxHP;
     NavMeshAgent Agent;
 
-
     [SerializeField] private float Range;
-    [SerializeField] private GameObject Board;
 
-    [SerializeField] private Image Silider01Fill, Silider02Fill;
-
-    Coroutine Coroutine;
     Coroutine Hit_Coroutine;
-    Coroutine Find_Coroutine;
+
     Renderer Renderer;
     Animator Animator;
 
     Transform Target;
-    Transform CanvasTransform;
     Vector3 LastTargetPosition;
 
     bool IsAttack = false;
@@ -37,19 +31,10 @@ public class Monster : MonoBehaviour
         HP = MaxHP;
         Renderer = transform.GetComponentInChildren<Renderer>();
 
-        // Canvas UI를 카메라로 바라보게
-        {            
-            CanvasTransform = Board.transform.parent;
-            CanvasTransform.eulerAngles = new Vector3(55.0f,
-                CanvasTransform.eulerAngles.y - transform.eulerAngles.y,
-                0f);
-        }
-        
-        
         AnimationChange("IDLE", false);
-
         StartCoroutine(FindPlayer());
     }
+
     private void AnimationChange(string ani, bool isTrigger = false)
     {
         Animator.SetBool("IDLE", false);
@@ -70,14 +55,17 @@ public class Monster : MonoBehaviour
     }
 
     private void Update()
-    {        
+    {
         if (Target == null)
             return;
 
         float distance = Vector3.Distance(Target.position, transform.position);
-        const float attackedDistance = 2.0f;
 
-        if (distance > attackedDistance && distance <= 10.0f)
+        const float attackedDistance = 2.0f;
+        const float returnedDistance = 10.0f;
+
+
+        if (distance > attackedDistance && distance <= returnedDistance)
         {
             StopMovement(false);
             Animator.SetBool("WALK", false);
@@ -94,7 +82,7 @@ public class Monster : MonoBehaviour
                 AttackPlayer();
             }
         }
-        else if (distance > 10.0f)
+        else if (distance > returnedDistance)
         {
             StopMovement(false);
             Animator.SetBool("WALK", false);
@@ -145,16 +133,12 @@ public class Monster : MonoBehaviour
         var distance = Vector3.Distance(transform.position, playerPos);
         if (distance <= Range)
         {
-            Board.SetActive(true);
+            Canvas_Holder.instance.AddSlider(this);
             Canvas_Holder.instance.GetText(dmg.ToString(), Color.yellow, transform.position);
             HP -= dmg;
             P_Movement.instance.GetComponent<Character>().GetHitParticle();
 
-            if (Coroutine != null)
-            {
-                StopCoroutine(Coroutine);
-            }
-            Coroutine = StartCoroutine(SliderCoroutine(HP));
+            Canvas_Holder.instance.AddSlider(this);
 
             if (Hit_Coroutine != null)
             {
@@ -197,17 +181,5 @@ public class Monster : MonoBehaviour
         }
     }
 
-    IEnumerator SliderCoroutine(int hp)
-    {
-        float value = (float)HP / (float)MaxHP;
-        Silider02Fill.fillAmount = value;
 
-        float timer = 0.0f;
-        while (timer < 1.0f)
-        {
-            timer += Time.deltaTime;
-            Silider01Fill.fillAmount = Mathf.Lerp(Silider01Fill.fillAmount, Silider02Fill.fillAmount, timer);
-            yield return null;
-        }
-    }
 }

@@ -23,11 +23,14 @@ public class Canvas_Holder : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;            
+            instance = this;
         }
-        
+
     }
     private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
+    private Dictionary<Monster, Directional_Monster_Slider> MonsterSliders = new Dictionary<Monster, Directional_Monster_Slider>();
+    public Directional_Monster_Slider MonsterSlider;
+
     public static Queue<UIPART> Uis = new Queue<UIPART>();
     Popup_Description popup;
 
@@ -91,7 +94,7 @@ public class Canvas_Holder : MonoBehaviour
                 part.Value.Close();
             }
         }
-    }    
+    }
 
     private void Start()
     {
@@ -104,7 +107,7 @@ public class Canvas_Holder : MonoBehaviour
 
         //Delegate_Holder.OnInteraction += GetBoard;
         Delegate_Holder.OnInteractionOut += BoardOut;
-        
+
         Delegate_Holder.OnHP += HPCheck;
         Delegate_Holder.OnStamina += StaminaCheck;
     }
@@ -112,7 +115,37 @@ public class Canvas_Holder : MonoBehaviour
     {
         CheckUI(KeyCode.I, "INVENTORY");
         CheckUI(KeyCode.B, "BUILDING");
+
+        CheckSlider();
     }
+
+    public void AddSlider(Monster monster)
+    {
+        if (MonsterSliders.ContainsKey(monster))
+        {
+            MonsterSliders[monster].GetSliderCheck();
+        }
+        else
+        {
+            var go = Instantiate(MonsterSlider, transform);
+            go.Monster = monster;
+
+            MonsterSliders.Add(monster, go);
+            MonsterSliders[monster].GetSliderCheck();
+        }
+    }
+
+    private void CheckSlider()
+    {
+        foreach (var slider in MonsterSliders)
+        {
+            var pos = slider.Key.transform.position;
+            pos.y += 1.5f;
+
+            slider.Value.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(pos);
+        }
+    }
+
     public void GetText(string temp, Color color, Vector3 posReal)
     {
         posReal.y += 3.0f;
