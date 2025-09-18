@@ -10,6 +10,7 @@ public class Monster : MonoBehaviour
     NavMeshAgent Agent;
 
     [SerializeField] private float Range;
+    [SerializeField] private GameObject DestroyParticle;
 
     Coroutine Hit_Coroutine;
 
@@ -130,32 +131,33 @@ public class Monster : MonoBehaviour
             return;
 
         var playerPos = P_Movement.instance.transform.position;
-        var distance = Vector3.Distance(transform.position, playerPos);
-        if (distance <= Range)
+        Canvas_Holder.instance.GetText(dmg.ToString(), Color.yellow, transform.position);
+        HP -= dmg;
+
+        Canvas_Holder.instance.AddSlider(this);
+        P_Movement.instance.GetComponent<Character>().GetHitParticle();
+
+        if (Hit_Coroutine != null)
         {
-            Canvas_Holder.instance.GetText(dmg.ToString(), Color.yellow, transform.position);
-            HP -= dmg;
+            StopCoroutine(Hit_Coroutine);
+        }
+        Hit_Coroutine = StartCoroutine(GetHitCoroutine());
 
-            Canvas_Holder.instance.AddSlider(this);
-            P_Movement.instance.GetComponent<Character>().GetHitParticle();
+        if (HP <= 0)
+        {
+            IsDead = true;
+            StopAllCoroutines();
+            StopMovement(true);
 
-            if (Hit_Coroutine != null)
-            {
-                StopCoroutine(Hit_Coroutine);
-            }
-            Hit_Coroutine = StartCoroutine(GetHitCoroutine());
+            // 파티클 생성
+            var particlePos = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+            Instantiate(DestroyParticle, particlePos, Quaternion.identity);
 
-            if (HP <= 0)
-            {
-                IsDead = true;
-                StopAllCoroutines();
-                StopMovement(true);
-                ParentSpawner?.SpawnedMonsters.Remove(this);
-                Canvas_Holder.instance.RemoveSlider(this);
-                this.gameObject.layer = LayerMask.NameToLayer("Default");
-                AnimationChange("DIE", true);
-                Destroy(this.gameObject, 1.5f); // 1.5초뒤 바로 삭제
-            }
+            ParentSpawner?.SpawnedMonsters.Remove(this);
+            Canvas_Holder.instance.RemoveSlider(this);
+            this.gameObject.layer = LayerMask.NameToLayer("Default");
+            AnimationChange("DIE", true);
+            Destroy(this.gameObject, 1.5f); // 1.5초뒤 바로 삭제
         }
     }
 

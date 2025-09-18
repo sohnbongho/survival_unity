@@ -4,6 +4,7 @@ using UnityEngine;
 public class P_Finder : MonoBehaviour
 {
     [SerializeField] private float checkRaduis = 5.0f;
+    [SerializeField] private float checkMonsterRaduis = 10.0f;
     [SerializeField] private LayerMask interactableLayer; // "object"Layer를 유니티에서 등록해야 한다.
     [SerializeField] private LayerMask MonsterLayer; // 
 
@@ -40,7 +41,7 @@ public class P_Finder : MonoBehaviour
         P_Movement.instance.EquipmentAllDeactive();
         activeIcons.Clear();
     }
-
+    
 
     private void Update()
     {
@@ -50,23 +51,36 @@ public class P_Finder : MonoBehaviour
         }
 
         //////////// 근처 몬스터 체크
-        Collider[] monsterObjects = Physics.OverlapSphere(transform.position, checkRaduis, MonsterLayer);
+        Collider[] monsterObjects = Physics.OverlapSphere(transform.position, checkMonsterRaduis, MonsterLayer);
         GetMonster = monsterObjects.Length > 0;
         if (GetMonster)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            MonsterTarget = null;
+            float monsterClosetDistance = Mathf.Infinity;
+            foreach(var monster in monsterObjects)
             {
-                if (IsAttack == false)
+                float distance = Vector3.Distance(transform.position, monster.transform.position);
+                if(distance < monsterClosetDistance)
                 {
-                    AttackMonster(monsterObjects);
-                    P_Movement.instance.EquipmentChange(Object_Type.Monster, true);
+                    monsterClosetDistance = distance;
+                    MonsterTarget = monster.transform;
                 }
             }
+            if(MonsterTarget != null)
+            {
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    if (IsAttack == false)
+                    {
+                        AttackMonster(monsterObjects);
+                        P_Movement.instance.EquipmentChange(Object_Type.Monster, true);
+                    }
+                }
 
-            MonsterTarget = monsterObjects[0].transform;
-            transform.LookAt(MonsterTarget);
-            closetObject = null;
-            IconInit();
+                transform.LookAt(MonsterTarget);
+                closetObject = null;
+                IconInit();
+            }            
             return;
         }
 

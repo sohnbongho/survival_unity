@@ -178,6 +178,7 @@ MonoBehaviour:
   HP: 110
   MaxHP: 110
   Range: 3
+  DestroyParticle: {fileID: 2043095642349601647, guid: 7f617ea469dffcd43ae09f154149fb7e, type: 3}
 --- !u!136 &2372329675981736909
 CapsuleCollider:
   m_ObjectHideFlags: 0

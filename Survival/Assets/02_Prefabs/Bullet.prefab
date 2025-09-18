@@ -14675,7 +14675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee4fbca56628b4c4fabc68b9015b8006, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  Speed: 10
+  Speed: 15
   ExplositionRadius: 5
   Damage: 30
   ExlosionParticle: {fileID: 7024543094503053558, guid: 3e7f4a7f4591d464e8a2efc8808b223e, type: 3}
