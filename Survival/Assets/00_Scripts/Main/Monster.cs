@@ -1,11 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class Monster : MonoBehaviour
 {
     public int HP;
     public int MaxHP;
+    NavMeshAgent Agent;
+
 
     [SerializeField] private float Range;
     [SerializeField] private GameObject Board;
@@ -14,13 +17,117 @@ public class Monster : MonoBehaviour
 
     Coroutine Coroutine;
     Coroutine Hit_Coroutine;
+    Coroutine Find_Coroutine;
     Renderer Renderer;
+    Animator Animator;
+
+    Transform Target;
+    Vector3 LastTargetPosition;
+
+    bool IsAttack = false;
+    bool IsDead = false;
+
 
     public void Start()
     {
+        Agent = GetComponent<NavMeshAgent>();
+        Animator = GetComponent<Animator>();
+
         HP = MaxHP;
         Renderer = transform.GetComponentInChildren<Renderer>();
+        AnimationChange("IDLE", false);
+
+        StartCoroutine(FindPlayer());
     }
+    private void AnimationChange(string ani, bool isTrigger = false)
+    {
+        Animator.SetBool("IDLE", false);
+        Animator.SetBool("WALK", false);
+        if (isTrigger)
+        {
+            Animator.SetTrigger(ani);
+        }
+        else
+        {
+            Animator.SetBool(ani, true);
+        }
+
+    }
+    private void Attack()
+    {
+        P_Movement.instance.GetDamage(10);
+    }
+
+    private void Update()
+    {
+        if (Target == null)
+            return;
+
+        float distance = Vector3.Distance(Target.position, transform.position);
+        const float attackedDistance = 2.0f;
+
+        if (distance > attackedDistance && distance <= 10.0f)
+        {
+            StopMovement(false);
+            Animator.SetBool("WALK", false);
+            Agent.SetDestination(Target.position);
+
+            LastTargetPosition = Target.position;
+        }
+        else if (distance <= attackedDistance)
+        {
+            //////// 대상에게 도착
+            StopMovement(true);
+            if (IsAttack == false)
+            {
+                AttackPlayer();
+            }
+        }
+        else if (distance > 10.0f)
+        {
+            StopMovement(false);
+            Animator.SetBool("WALK", false);
+
+            Target = null;
+            LastTargetPosition = Vector3.zero;
+        }
+    }
+    private void AttackReturn() => IsAttack = false;
+
+    private void StopMovement(bool stopped)
+    {
+        Agent.isStopped = stopped;
+        if (stopped)
+        {
+            Agent.velocity = Vector3.zero;
+        }
+    }
+
+    private void AttackPlayer()
+    {
+        IsAttack = true;
+        AnimationChange("ATTACK", true);
+        Invoke("AttackReturn", 1.0f);
+    }
+
+    IEnumerator FindPlayer()
+    {
+        float distance = Vector3.Distance(transform.position, P_Movement.instance.transform.position);
+        if (Target == null)
+        {
+            if (distance <= 5.0f)
+            {
+                Target = P_Movement.instance.transform;
+                LastTargetPosition = Target.position;
+                AnimationChange("WALK", false);
+            }
+        }
+
+        yield return new WaitForSeconds(1.0f);
+        StartCoroutine(FindPlayer());
+    }
+
+
     public void GetDamage(int dmg)
     {
         var playerPos = P_Movement.instance.transform.position;

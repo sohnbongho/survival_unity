@@ -30,10 +30,13 @@ public class P_Movement : Character
         base.Start();
 
         controller = GetComponent<CharacterController>();
-        Finder = GetComponent<P_Finder>();
+        Finder = GetComponent<P_Finder>();        
 
         Delegate_Holder.OnInteraction += ReturnCharacterMove;
         Delegate_Holder.OnInteractionOut += () => animator.SetBool("NoneInteraction", false);
+
+        Debug.Log($"{HP}");
+        Delegate_Holder.OnHPChange(HP);
     }
 
     public void ReturnCharacterMove()
@@ -103,5 +106,12 @@ public class P_Movement : Character
                 transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
             }
         }
+    }
+    public void GetDamage(int dmg)
+    {
+        Canvas_Holder.instance.GetText(dmg.ToString(), Color.red, transform.position);
+        HP -= dmg;
+
+        Delegate_Holder.OnHPChange(HP);
     }
 }

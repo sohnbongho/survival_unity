@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +12,9 @@ public class Canvas_Holder : MonoBehaviour
     [SerializeField] private GameObject Board;
     [SerializeField] private GameObject InventoryPanel;
     [SerializeField] private TextMeshProUGUI StaminaText;
+    [SerializeField] private TextMeshProUGUI HPText;
     [SerializeField] private Image StaminaFill;
+    [SerializeField] private Image HPFill;
 
     public Image BoardHpFill, BoardHpWhiteFill;
     Coroutine F_Coroutine;
@@ -22,8 +23,9 @@ public class Canvas_Holder : MonoBehaviour
     {
         if (instance == null)
         {
-            instance = this;
+            instance = this;            
         }
+        
     }
     private Dictionary<string, UIPART> uiParts = new Dictionary<string, UIPART>();
     public static Queue<UIPART> Uis = new Queue<UIPART>();
@@ -89,7 +91,7 @@ public class Canvas_Holder : MonoBehaviour
                 part.Value.Close();
             }
         }
-    }
+    }    
 
     private void Start()
     {
@@ -102,6 +104,8 @@ public class Canvas_Holder : MonoBehaviour
 
         //Delegate_Holder.OnInteraction += GetBoard;
         Delegate_Holder.OnInteractionOut += BoardOut;
+        
+        Delegate_Holder.OnHP += HPCheck;
         Delegate_Holder.OnStamina += StaminaCheck;
     }
     private void Update()
@@ -120,6 +124,14 @@ public class Canvas_Holder : MonoBehaviour
         TextMeshPro textObj = go.GetComponent<TextMeshPro>();
         textObj.color = color;
         textObj.text = temp;
+    }
+
+    private void HPCheck(int value)
+    {
+        Character character = P_Movement.instance.GetComponent<Character>();
+
+        HPText.text = character.HP.ToString() + "/" + character.MaxHP.ToString();
+        HPFill.fillAmount = (float)character.HP / (float)character.MaxHP;
     }
 
     private void StaminaCheck(int value)
