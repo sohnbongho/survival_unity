@@ -84,6 +84,7 @@
     <Compile Include="Assets\00_Scripts\Main\Monster.cs" />
     <Compile Include="Assets\00_Scripts\Building\Building_OBJ.cs" />
     <Compile Include="Assets\00_Scripts\Main\P_Finder.cs" />
+    <Compile Include="Assets\00_Scripts\Main\Bullet.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\INVENTORY.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Asset_Mng.cs" />

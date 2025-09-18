@@ -19,6 +19,7 @@ public class P_Finder : MonoBehaviour
     private bool IsAttack = false;
 
     private Transform closetObject = null;
+    public Transform MonsterTarget;
 
     private void Start()
     {
@@ -62,7 +63,8 @@ public class P_Finder : MonoBehaviour
                 }
             }
 
-            transform.LookAt(monsterObjects[0].transform);
+            MonsterTarget = monsterObjects[0].transform;
+            transform.LookAt(MonsterTarget);
             closetObject = null;
             IconInit();
             return;

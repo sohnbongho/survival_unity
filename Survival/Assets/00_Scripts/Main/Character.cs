@@ -30,6 +30,9 @@ public class Character : MonoBehaviour
         m_Object.OnHit(this);
     }
 
+    /// <summary>
+    /// 근거리 공격용
+    /// </summary>
     public virtual void Attack()
     {
         GetHitParticle();
@@ -37,6 +40,13 @@ public class Character : MonoBehaviour
         {
             Colliders[i].GetComponent<Monster>().GetDamage(40);
         }
+    }
+
+    /// <summary>
+    /// 원거리 공격용
+    /// </summary>
+    public virtual void Bullet()
+    {
 
     }
 

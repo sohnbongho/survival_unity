@@ -18,6 +18,9 @@ public class P_Movement : Character
     private CharacterController controller;
     private P_Finder Finder;
 
+    public Bullet BulletObject;
+    public Transform BulletTransform;
+
     private void Awake()
     {
         if (instance == null)
@@ -38,6 +41,14 @@ public class P_Movement : Character
 
         StartCoroutine(InvokeHPChange());
     }
+    public override void Bullet()
+    {
+        base.Bullet();
+
+        var go = Instantiate(BulletObject, BulletTransform.position, Quaternion.identity);
+        go.Init(Finder.MonsterTarget);
+    }
+
     IEnumerator InvokeHPChange()
     {
         yield return new WaitForSeconds(0.5f);
