@@ -9,7 +9,7 @@ public class Monster_Spawner : MonoBehaviour
     public float SpawnRadius;
     public float DetectionRadius;
 
-    private List<Monster> SpawnedMonsters = new List<Monster>();
+    public List<Monster> SpawnedMonsters = new List<Monster>();
     private Transform Player;
 
     private void Start()
@@ -27,6 +27,7 @@ public class Monster_Spawner : MonoBehaviour
             var newMonster = Instantiate(Monster, spawnPosition,
                 Quaternion.Euler(0.0f, Random.Range(0.0f, 360.0f), 0.0f));
 
+            newMonster.Init(this);
             SpawnedMonsters.Add(newMonster);
         }
     }
@@ -39,9 +40,15 @@ public class Monster_Spawner : MonoBehaviour
             transform.position.y,
             transform.position.z + randomCircle.z);
     }
+    
+
     private void Update()
     {
         CheckPlayerDistance();
+        if(SpawnedMonsters.Count == 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     private void CheckPlayerDistance()

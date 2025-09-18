@@ -21,7 +21,7 @@ public class Monster : MonoBehaviour
     bool IsAttack = false;
     bool IsDead = false;
     Vector3 MyPos;
-
+    Monster_Spawner ParentSpawner;
 
     public void Start()
     {
@@ -47,7 +47,10 @@ public class Monster : MonoBehaviour
         {
             Animator.SetBool(ani, true);
         }
-
+    }
+    public void Init(Monster_Spawner parent)
+    {
+        ParentSpawner = parent;
     }
     private void Attack()
     {
@@ -61,7 +64,7 @@ public class Monster : MonoBehaviour
 
         if (Target == null)
         {
-            if(Agent.remainingDistance <= 2.0f)
+            if (Agent.remainingDistance <= 2.0f)
             {
                 StopMovement(true);
                 AnimationChange("IDLE", false);
@@ -147,6 +150,7 @@ public class Monster : MonoBehaviour
                 IsDead = true;
                 StopAllCoroutines();
                 StopMovement(true);
+                ParentSpawner?.SpawnedMonsters.Remove(this);
                 Canvas_Holder.instance.RemoveSlider(this);
                 this.gameObject.layer = LayerMask.NameToLayer("Default");
                 AnimationChange("DIE", true);

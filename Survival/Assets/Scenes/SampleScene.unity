@@ -2918,9 +2918,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Object_Mng
   MonsterSpawner: {fileID: 1183653725968328505, guid: 6a64f53f6a9ff504d8d6c7bb2bd6b2a5, type: 3}
   CullingGroupRadius: 5
-  SpawnAngleValue: 80
+  SpawnAngleValue: 60
   CenterLimitValue: 20
   Maximum: 50
+  CheckRadius: 10
 --- !u!1 &621293264
 GameObject:
   m_ObjectHideFlags: 0

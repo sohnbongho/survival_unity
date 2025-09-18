@@ -16,6 +16,8 @@ public class Object_Mng : MonoBehaviour
     public int Maximum = 50;
 
     Object_Scriptable[] m_Datas;
+    public float CheckRadius;
+
     private void Start()
     {
         m_Datas = Resources.LoadAll<Object_Scriptable>("Object");
@@ -83,7 +85,8 @@ public class Object_Mng : MonoBehaviour
             Vector3 pos;
             MakePos(out pos);
 
-            while (Vector3.Distance(pos, Vector3.zero) <= CenterLimitValue)
+            while (Vector3.Distance(pos, Vector3.zero) <= CenterLimitValue ||
+                IsPositionOverlapping(pos, CheckRadius))
             {
                 MakePos(out pos);
             }
@@ -121,6 +124,18 @@ public class Object_Mng : MonoBehaviour
 
         ///////// 만든 오브젝트 Culling
         MakeCulling();
+    }
+
+    private bool IsPositionOverlapping(Vector3 position, float checkRadius)
+    {
+        foreach(var obj in SetObjects) 
+        { 
+            if(Vector3.Distance(obj.transform.position, position) < checkRadius)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void MakePos(out Vector3 pos)

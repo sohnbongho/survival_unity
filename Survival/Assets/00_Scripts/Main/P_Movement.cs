@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -30,11 +31,16 @@ public class P_Movement : Character
         base.Start();
 
         controller = GetComponent<CharacterController>();
-        Finder = GetComponent<P_Finder>();        
+        Finder = GetComponent<P_Finder>();
 
         Delegate_Holder.OnInteraction += ReturnCharacterMove;
         Delegate_Holder.OnInteractionOut += () => animator.SetBool("NoneInteraction", false);
-                
+
+        StartCoroutine(InvokeHPChange());
+    }
+    IEnumerator InvokeHPChange()
+    {
+        yield return new WaitForSeconds(0.5f);
         Delegate_Holder.OnHPChange(HP);
     }
 

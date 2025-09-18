@@ -63,6 +63,8 @@ public class P_Finder : MonoBehaviour
             }
 
             transform.LookAt(monsterObjects[0].transform);
+            closetObject = null;
+            IconInit();
             return;
         }
 
