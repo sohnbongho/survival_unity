@@ -70,7 +70,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.716
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.949
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -510,6 +510,7 @@ GameObject:
   - component: {fileID: 6310660061752100411}
   - component: {fileID: 4795116115946135705}
   - component: {fileID: 7195783385439864771}
+  - component: {fileID: 1436785855995175749}
   m_Layer: 9
   m_Name: MonsterHPBar
   m_TagString: Untagged
@@ -616,3 +617,15 @@ MonoBehaviour:
   Silider01Fill: {fileID: 3542017743647135168}
   Silider02Fill: {fileID: 5696280862390154899}
   Monster: {fileID: 0}
+--- !u!114 &1436785855995175749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5075168777668596769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7af9afdebd5d9fe48a67304a530482f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Animation_Handler

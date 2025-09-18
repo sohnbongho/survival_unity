@@ -56,6 +56,9 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
+        if (IsDead)
+            return;
+
         if (Target == null)
             return;
 
@@ -111,6 +114,9 @@ public class Monster : MonoBehaviour
 
     IEnumerator FindPlayer()
     {
+        if (IsDead)
+            yield break;
+
         float distance = Vector3.Distance(transform.position, P_Movement.instance.transform.position);
         if (Target == null)
         {
@@ -129,25 +135,37 @@ public class Monster : MonoBehaviour
 
     public void GetDamage(int dmg)
     {
+        if (IsDead)
+            return;        
+
         var playerPos = P_Movement.instance.transform.position;
         var distance = Vector3.Distance(transform.position, playerPos);
         if (distance <= Range)
-        {
-            Canvas_Holder.instance.AddSlider(this);
+        {            
             Canvas_Holder.instance.GetText(dmg.ToString(), Color.yellow, transform.position);
             HP -= dmg;
-            P_Movement.instance.GetComponent<Character>().GetHitParticle();
-
+            
             Canvas_Holder.instance.AddSlider(this);
+            P_Movement.instance.GetComponent<Character>().GetHitParticle();
 
             if (Hit_Coroutine != null)
             {
                 StopCoroutine(Hit_Coroutine);
             }
             Hit_Coroutine = StartCoroutine(GetHitCoroutine());
+
+            if(HP <= 0)
+            {
+                IsDead = true;
+                StopAllCoroutines();
+                StopMovement(true);
+                Canvas_Holder.instance.RemoveSlider(this);
+                this.gameObject.layer = LayerMask.NameToLayer("Default");
+                AnimationChange("DIE", true);
+                Destroy(this.gameObject, 1.5f); // 1.5초뒤 바로 삭제
+            }
         }
     }
-
 
     IEnumerator GetHitCoroutine()
     {

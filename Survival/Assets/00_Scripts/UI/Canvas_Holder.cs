@@ -135,12 +135,21 @@ public class Canvas_Holder : MonoBehaviour
         }
     }
 
+    public void RemoveSlider(Monster monster)
+    {
+        if (false == MonsterSliders.ContainsKey(monster))
+            return;
+
+        MonsterSliders[monster].GetComponent<Animator>().SetTrigger("Out");
+        MonsterSliders.Remove(monster);
+    }
+
     private void CheckSlider()
     {
         foreach (var slider in MonsterSliders)
         {
             var pos = slider.Key.transform.position;
-            pos.y += 1.5f;
+            pos.y += 2.0f;
 
             slider.Value.GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(pos);
         }
