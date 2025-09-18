@@ -51,7 +51,7 @@ public class P_Movement : Character
 
     IEnumerator InvokeHPChange()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         Delegate_Holder.OnHPChange(HP);
     }
 
