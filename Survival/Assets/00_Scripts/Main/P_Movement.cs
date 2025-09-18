@@ -34,8 +34,7 @@ public class P_Movement : Character
 
         Delegate_Holder.OnInteraction += ReturnCharacterMove;
         Delegate_Holder.OnInteractionOut += () => animator.SetBool("NoneInteraction", false);
-
-        Debug.Log($"{HP}");
+                
         Delegate_Holder.OnHPChange(HP);
     }
 

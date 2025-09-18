@@ -35,7 +35,7 @@ public class Character : MonoBehaviour
         GetHitParticle();
         for (int i = 0; i < Colliders.Length; i++)
         {
-            Colliders[i].GetComponent<Monster>().GetDamage(10);
+            Colliders[i].GetComponent<Monster>().GetDamage(40);
         }
 
     }

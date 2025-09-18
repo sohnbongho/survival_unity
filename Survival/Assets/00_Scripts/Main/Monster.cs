@@ -22,6 +22,7 @@ public class Monster : MonoBehaviour
     Animator Animator;
 
     Transform Target;
+    Transform CanvasTransform;
     Vector3 LastTargetPosition;
 
     bool IsAttack = false;
@@ -35,6 +36,16 @@ public class Monster : MonoBehaviour
 
         HP = MaxHP;
         Renderer = transform.GetComponentInChildren<Renderer>();
+
+        // Canvas UI를 카메라로 바라보게
+        {            
+            CanvasTransform = Board.transform.parent;
+            CanvasTransform.eulerAngles = new Vector3(55.0f,
+                CanvasTransform.eulerAngles.y - transform.eulerAngles.y,
+                0f);
+        }
+        
+        
         AnimationChange("IDLE", false);
 
         StartCoroutine(FindPlayer());
@@ -55,11 +66,11 @@ public class Monster : MonoBehaviour
     }
     private void Attack()
     {
-        P_Movement.instance.GetDamage(10);
+        P_Movement.instance.GetDamage(5);
     }
 
     private void Update()
-    {
+    {        
         if (Target == null)
             return;
 
