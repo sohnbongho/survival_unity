@@ -76,6 +76,7 @@
     <Compile Include="Assets\00_Scripts\UI\Item_Panel.cs" />
     <Compile Include="Assets\00_Scripts\UI\Building_Panel.cs" />
     <Compile Include="Assets\00_Scripts\Main\Interaction_Hit.cs" />
+    <Compile Include="Assets\00_Scripts\Main\Monster_Spawner.cs" />
     <Compile Include="Assets\00_Scripts\UI\Canvas_Holder.cs" />
     <Compile Include="Assets\00_Scripts\Manager\Building_Mng.cs" />
     <Compile Include="Assets\00_Scripts\UI\PART\UIPART.cs" />

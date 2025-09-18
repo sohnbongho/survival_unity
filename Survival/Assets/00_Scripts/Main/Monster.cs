@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
+using static UnityEditor.PlayerSettings;
 
 public class Monster : MonoBehaviour
 {
@@ -17,10 +17,10 @@ public class Monster : MonoBehaviour
     Animator Animator;
 
     Transform Target;
-    Vector3 LastTargetPosition;
 
     bool IsAttack = false;
     bool IsDead = false;
+    Vector3 MyPos;
 
 
     public void Start()
@@ -30,9 +30,9 @@ public class Monster : MonoBehaviour
 
         HP = MaxHP;
         Renderer = transform.GetComponentInChildren<Renderer>();
+        MyPos = transform.position;
 
         AnimationChange("IDLE", false);
-        StartCoroutine(FindPlayer());
     }
 
     private void AnimationChange(string ani, bool isTrigger = false)
@@ -60,23 +60,20 @@ public class Monster : MonoBehaviour
             return;
 
         if (Target == null)
+        {
+            if(Agent.remainingDistance <= 2.0f)
+            {
+                StopMovement(true);
+                AnimationChange("IDLE", false);
+            }
             return;
+        }
 
         float distance = Vector3.Distance(Target.position, transform.position);
 
         const float attackedDistance = 2.0f;
-        const float returnedDistance = 10.0f;
 
-
-        if (distance > attackedDistance && distance <= returnedDistance)
-        {
-            StopMovement(false);
-            Animator.SetBool("WALK", false);
-            Agent.SetDestination(Target.position);
-
-            LastTargetPosition = Target.position;
-        }
-        else if (distance <= attackedDistance)
+        if (distance <= attackedDistance)
         {
             //////// 대상에게 도착
             StopMovement(true);
@@ -85,13 +82,11 @@ public class Monster : MonoBehaviour
                 AttackPlayer();
             }
         }
-        else if (distance > returnedDistance)
+        else
         {
             StopMovement(false);
-            Animator.SetBool("WALK", false);
-
-            Target = null;
-            LastTargetPosition = Vector3.zero;
+            AnimationChange("WALK", false);
+            Agent.SetDestination(Target.position);
         }
     }
     private void AttackReturn() => IsAttack = false;
@@ -112,39 +107,32 @@ public class Monster : MonoBehaviour
         Invoke("AttackReturn", 1.0f);
     }
 
-    IEnumerator FindPlayer()
+    public void GetPlayer(Transform target)
     {
-        if (IsDead)
-            yield break;
-
-        float distance = Vector3.Distance(transform.position, P_Movement.instance.transform.position);
-        if (Target == null)
-        {
-            if (distance <= 5.0f)
-            {
-                Target = P_Movement.instance.transform;
-                LastTargetPosition = Target.position;
-                AnimationChange("WALK", false);
-            }
-        }
-
-        yield return new WaitForSeconds(1.0f);
-        StartCoroutine(FindPlayer());
+        Target = target;
+        AnimationChange("WALK", false);
     }
 
+    public void RemovePlayer()
+    {
+        Target = null;
+        StopMovement(false);
+        AnimationChange("WALK", false);
+        Agent.SetDestination(MyPos);
+    }
 
     public void GetDamage(int dmg)
     {
         if (IsDead)
-            return;        
+            return;
 
         var playerPos = P_Movement.instance.transform.position;
         var distance = Vector3.Distance(transform.position, playerPos);
         if (distance <= Range)
-        {            
+        {
             Canvas_Holder.instance.GetText(dmg.ToString(), Color.yellow, transform.position);
             HP -= dmg;
-            
+
             Canvas_Holder.instance.AddSlider(this);
             P_Movement.instance.GetComponent<Character>().GetHitParticle();
 
@@ -154,7 +142,7 @@ public class Monster : MonoBehaviour
             }
             Hit_Coroutine = StartCoroutine(GetHitCoroutine());
 
-            if(HP <= 0)
+            if (HP <= 0)
             {
                 IsDead = true;
                 StopAllCoroutines();
