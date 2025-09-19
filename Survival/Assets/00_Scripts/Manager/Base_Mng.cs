@@ -10,13 +10,19 @@ public class Base_Mng : MonoBehaviour
         {
             instance = this;
 
-            Build = GetComponentInChildren<Building_Mng>();
-            Game = GetComponentInChildren<Game_Mng>();
-            Object = GetComponentInChildren<Object_Mng>();
+            Initialize();            
         }
+    }
+    private void Initialize()
+    {
+        Build = GetComponentInChildren<Building_Mng>();
+        Game = GetComponentInChildren<Game_Mng>();
+        Object = GetComponentInChildren<Object_Mng>();
+        Weather = GetComponentInChildren<Weather_Mng>();
     }
 
     public static Building_Mng Build;
     public static Game_Mng Game;
     public static Object_Mng Object;
+    public static Weather_Mng Weather;
 }

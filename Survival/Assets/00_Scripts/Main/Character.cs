@@ -19,6 +19,12 @@ public class Character : MonoBehaviour
         animator = GetComponent<Animator>();
         HP = MaxHP;
     }
+    public void AnimationWeight(int layer, float weight)
+    {
+        // [layer]번 레이어 weight값 설정
+        animator.SetLayerWeight(layer, weight);
+    }
+
     public virtual void Hit()
     {
         if (m_Object == null)

@@ -131,12 +131,17 @@ public class P_Finder : MonoBehaviour
     private void AttackMonster(Collider[] mosnters)
     {
         IsAttack = true;
+        P_Movement.instance.AnimationWeight(1, 1); // 1번 레이더 weight 1로 설정
         P_Movement.instance.AnimationChange("Attack");
         P_Movement.instance.Colliders = mosnters;
         Invoke("ReturnAttack", AttackSpeed);
     }
 
-    private void ReturnAttack() => IsAttack = false;
+    private void ReturnAttack()
+    {
+        P_Movement.instance.AnimationWeight(1, 0); // 공격끝나면 1번레이어 가중치 0으로 
+        IsAttack = false;
+    }
 
     private void IconInit()
     {
