@@ -3004,6 +3004,10 @@ MonoBehaviour:
   RainParticleSystem: {fileID: 2887334765192628992}
   MinEmissionRate: 0
   MaxEmissionRate: 500
+  WindMaterial: {fileID: 2100000, guid: e85669880144e1f4ab0ee9d8a4abce6a, type: 2}
+  WindStrength: 0.25
+  MinWindStrength: 0.25
+  MaxWindStrength: 1
 --- !u!1 &621293264
 GameObject:
   m_ObjectHideFlags: 0
